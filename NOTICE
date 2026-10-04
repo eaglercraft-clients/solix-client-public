@@ -1,0 +1,4 @@
+SolixClient is an unofficial Minecraft client built on Eaglercraft (lax1dude and contributors).
+Minecraft is a trademark of Mojang AB / Microsoft. SolixClient is not affiliated with Mojang or Microsoft.
+This repository contains only compiled release files and documentation, no source code.
+Bundled UI fonts are licensed under the SIL Open Font License (see the client's /fonts/ folder on the live site).
