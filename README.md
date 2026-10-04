@@ -20,9 +20,9 @@ and particles, and a plugin system with a drag-and-drop HUD editor. You don't ne
 ## Offline download
 
 Always-latest direct links:
-[SolixClient-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/latest/download/SolixClient-js.html) ·
-[SolixClient-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/latest/download/SolixClient-wasm.html) ·
-[solix-plugins.solixplugin.zip](https://github.com/eaglercraft-clients/solix-client-public/releases/latest/download/solix-plugins.solixplugin.zip).
+[SolixClient-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-js.html) ·
+[SolixClient-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-wasm.html) ·
+[solix-plugins.solixplugin.zip](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/solix-plugins.solixplugin.zip).
 The same HTML files are also in [`download/`](download/) in this repo. Or browse [Releases](../../releases):
 
 | File | What it is |
