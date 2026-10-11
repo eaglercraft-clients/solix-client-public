@@ -1,0 +1,11 @@
+{
+  "id": "pvp-low-health",
+  "name": "Low Health Warning",
+  "version": "1.4.0",
+  "author": "solix-plugins",
+  "description": "A full-screen red vignette that pulses faster the lower your health is, a quick edge flash when you take damage, and an optional badge and toast.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "category": "pvp",
+  "hooks": ["hud", "tick", "combat"]
+}

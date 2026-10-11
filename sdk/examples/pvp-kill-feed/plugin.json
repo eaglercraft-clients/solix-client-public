@@ -1,0 +1,11 @@
+{
+  "id": "pvp-kill-feed",
+  "name": "Kill Feed",
+  "version": "1.4.0",
+  "author": "solix-plugins",
+  "description": "A compact kill feed built from chat death messages, with your own kills and deaths highlighted.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "category": "pvp",
+  "hooks": ["hud", "chat"]
+}

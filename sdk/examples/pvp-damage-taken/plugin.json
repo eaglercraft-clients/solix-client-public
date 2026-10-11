@@ -1,0 +1,11 @@
+{
+  "id": "pvp-damage-taken",
+  "name": "Damage Taken",
+  "version": "1.4.0",
+  "author": "solix-plugins",
+  "description": "Floating numbers for health you lose or regain, plus your last hit and total damage taken this life.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "category": "pvp",
+  "hooks": ["hud", "tick", "combat"]
+}

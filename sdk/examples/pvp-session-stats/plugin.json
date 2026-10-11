@@ -1,0 +1,11 @@
+{
+  "id": "pvp-session-stats",
+  "name": "PvP Session Stats",
+  "version": "1.4.0",
+  "author": "solix-plugins",
+  "description": "Kills (read from chat death messages), deaths (when your health hits zero), K/D and kill streaks for this session.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "category": "pvp",
+  "hooks": ["hud", "chat", "tick", "server"]
+}

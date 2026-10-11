@@ -1,0 +1,11 @@
+{
+  "id": "pvp-fight-timer",
+  "name": "Fight Timer",
+  "version": "1.3.0",
+  "author": "solix-plugins",
+  "description": "Times each fight, starting when you begin clicking and ending after a few quiet seconds. Also shows the health you lost during it.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "category": "pvp",
+  "hooks": ["hud", "input"]
+}

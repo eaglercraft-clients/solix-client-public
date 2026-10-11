@@ -1,0 +1,13 @@
+{
+  "id": "my-plugin",
+  "name": "My Plugin",
+  "version": "0.1.0",
+  "author": "you",
+  "description": "One sentence about what it shows or does.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": [
+    "hud",
+    "tick"
+  ]
+}
