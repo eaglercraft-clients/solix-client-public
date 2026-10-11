@@ -127,6 +127,7 @@ interface Solix {
     onDraw(phase: any, fn: any, ids: any): void;
     highlight(o: any): void;
     itemRenderer(fn: any, o: any): void;
+    tooltip(fn: any): void;
     clearLayouts(): void;
   };
   chat: {

@@ -59,6 +59,7 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.gui.onDraw(phase, fn, ids)` | Draw before / after any screen (menus, chat, options, containers). `ids` defaults to `"any"`. Returns `{remove()}`. |
 | `solix.gui.highlight(o)` | The same highlight colours for every container screen; a layout's own colours win. |
 | `solix.gui.itemRenderer(fn, o)` | &nbsp; |
+| `solix.gui.tooltip(fn)` | &nbsp; |
 | `solix.gui.clearLayouts()` | Drop all of your layouts, draw hooks and highlights. |
 | `solix.chat.input.mask(rule)` | While the chat box text starts with one of `prefixes` (e.g. `["/login", "/l", "/register", "/reg", "/changepassword"]`), every non-space character after the command is drawn as `char` (default `*`). Display only: the text that is sent is unchanged. `mask(null)` clears. Rules are dropped when the plugin is disabled, so set them in `solix.on("enable", ...)`. A function form is not supported (rules run client-side, no per-keystroke JS). |
 | `solix.vault.save(host)` | Opens a client-drawn "Save login for <host>" dialog (default host = the server you are on). The password goes into the client's vault, never to the plugin. |
@@ -555,6 +556,14 @@ Points can be `[x, y, x, y, ...]`, `[[x, y], ...]` or `[{x, y}, ...]`.
   damage maxDamage enchanted name size`). Return `true` to replace the icon; otherwise what you drew goes behind it
   (rarity glow etc.). `ids` limits the call to those items (cheaper). `itemRenderer(null)` removes it.
   Count and durability overlays stay vanilla (and use the pack font).
+
+* **`solix.gui.tooltip(fn)`** (`gui` hook): replace the vanilla item/text tooltip box on every screen (containers,
+  creative, menus, chat hover). `fn(g, ctx)` gets `ctx`: `{x, y, lines: [{text, raw}], itemId?, rarity, enchanted,
+  screenW, screenH}` — `text` has formatting codes stripped, `raw` keeps them; `itemId` / `rarity` / `enchanted` are
+  set for item tooltips (`rarity` is `common`/`uncommon`/`rare`/`epic`). Return `true` to replace the box; otherwise
+  your draws sit behind vanilla. `tooltip(null)` removes it. Errors are reported on the pack (3 crashes in a row drop
+  the replacement).
+
 
 ### HUD replacement (1.7)
 
