@@ -1,0 +1,10 @@
+{
+  "id": "theme-midnight-gold",
+  "name": "Midnight Gold",
+  "version": "1.0.0",
+  "author": "solix",
+  "description": "Sample custom theme: extends Solix Gold, swaps in a blue-gold accent and cooler glass.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": ["themes"]
+}
