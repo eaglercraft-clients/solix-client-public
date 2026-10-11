@@ -3,7 +3,7 @@
 
 type Color = string | number;
 type FontName = "medium" | "semibold" | "display";
-type HookName = "tick" | "hud" | "input" | "chat" | "screen" | "server" | "menu" | "themes" | "zoom" | "sprint" | "screenshot" | "crosshair" | "combat" | "fov" | "visuals" | "predict";
+type HookName = "tick" | "hud" | "input" | "chat" | "screen" | "server" | "menu" | "themes" | "zoom" | "sprint" | "screenshot" | "crosshair" | "combat" | "fov" | "visuals" | "freelook" | "predict";
 type EventName = "enable" | "disable" | "tick" | "key" | "mouse" | "keybind" | "keybindRelease" | "chat" | "screenOpen" | "serverJoin" | "serverLeave" | "settingChange" | "attack";
 type IconName = "play" | "servers" | "user" | "gear" | "monitor" | "gamepad" | "speaker" | "layout" | "access" | "gauge" | "search" | "refresh" | "star" | "star_o" | "clock" | "globe" | "chevron_r" | "chevron_d" | "chevron_l" | "check" | "close" | "plus" | "edit" | "trash" | "signal" | "link" | "exit" | "info" | "trophy" | "chart" | "cube" | "sparkle" | "shirt" | "chat" | "tag" | "shield" | "layers" | "bolt" | "sun" | "cloud" | "eye" | "keyboard" | "mouse" | "arrow_back" | "folder" | "saturn" | "heart" | "skull" | "sword" | "pickaxe" | "flag" | "hourglass" | "wifi_off" | "warning" | "dot" | "copy";
 
@@ -13,7 +13,10 @@ interface Effect { id: string; name: string; amplifier: number; durationTicks: n
 interface Player { name: string; x: number; y: number; z: number; yaw: number; pitch: number; facing: "north" | "south" | "east" | "west";
   health: number; maxHealth: number; food: number; xpLevel: number; dimension: string; dayTime: number;
   mainhand: Item | null; offhand: Item | null; armor: [Item | null, Item | null, Item | null, Item | null]; effects?: Effect[];
-  lookingAt?: LookBlock | null; lookingAtEntity?: EntityInfo | null; attackCooldown?: number; reach?: number }
+  lookingAt?: LookBlock | null; lookingAtEntity?: EntityInfo | null; attackCooldown?: number; reach?: number;
+  inventory?: InvItem[]; countItem(id: string): number }
+interface InvItem { id: string; name: string; count: number; slot: string }
+interface Stats { fps: number; ping: number; tps: number | null; cps: number; memory: { usedMB: number; totalMB: number; limitMB: number } | null }
 interface LookBlock { block: { id: string; name: string }; x: number; y: number; z: number; face: "up" | "down" | "north" | "south" | "east" | "west" }
 interface EntityInfo { name: string; type: string; health: number | null; maxHealth: number | null; distance: number }
 interface TargetInfo extends EntityInfo { armor: number | null }
@@ -48,6 +51,7 @@ interface Solix {
   log(...args: any[]): void;
   notify(text: string): void;
   readonly player: Player | null;
+  readonly stats: Stats;
   readonly client: ClientInfo;
   readonly theme: ThemeColors;
   settings: {
@@ -75,11 +79,15 @@ interface Solix {
   view: {
     setZoom(f: number): void;
     setFovClamp(min?: number | null, max?: number | null): void;
+    hurtCamScale(scale: number): void;
+    freelook(active: boolean): void;
     dynamicFovScale: number;
   };
   render: {
     fireScale(scale: number): void;
     offhandScale(scale: number): void;
+    hitColor(argb: Color | null): void;
+    hitboxes(opts: { enabled?: boolean; color?: Color; players?: boolean; mobs?: boolean; items?: boolean }): void;
   };
   combat: {
     readonly lastTarget: TargetInfo | null;

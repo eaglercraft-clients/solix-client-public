@@ -15,6 +15,7 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.log()` | Write to the client log (browser console), tagged with your plugin id, and to the last-50-lines log kept per plugin. `console.log` does the same. |
 | `solix.notify(text)` | Show a small Solix toast (max 160 chars). |
 | `solix.player` | Your own player (`null` outside a world): position, facing, health, food, xp, dimension, held items, armor, effects. Fresh copy per read. |
+| `solix.stats` | `{fps, ping, tps, cps, memory}`. `tps` is estimated from the server's time-update packets (about one per second; `20` in singleplayer, `null` outside a world). `cps` = your left clicks in the last second. `memory` = `{usedMB, totalMB, limitMB}` of the JS heap where the browser exposes it (Chromium), else `null`. |
 | `solix.client` | `{fps, ping, server, singleplayer, inGame, screen, time, version}`. |
 | `solix.theme` | Active theme colours `{id, accent, accentBright, accentDim, text, textMuted}` as hex strings. |
 | `solix.settings.bool(id, label, d, desc)` | Toggle setting. |
@@ -31,9 +32,13 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.themes.register(t)` | Add a theme to Appearance `{id, name, extends?, accent, glassTint, glassStrength, background, description}`. Hook `themes`. See ../themes/. |
 | `solix.view.setZoom(f)` | FOV multiplier, clamped to 0.15..1. Changes are smoothed, ignored while a screen is open, and reset when you're disabled. |
 | `solix.view.setFovClamp(min, max)` | Clamp the final in-game FOV to `min..max` degrees (1..179) after every vanilla effect (sprint, speed, bow, water). Pass `0`/`null` for one side to leave it open; `setFovClamp()` clears it. Zoom (`setZoom` and the zoom key) still applies on top. |
+| `solix.view.hurtCamScale(v)` | Damage camera tilt, 0..1 (default 1). `0` = no tilt. |
+| `solix.view.freelook(on)` | While `true`, the mouse orbits a third-person camera around you; your real yaw/pitch, and so your movement direction, stay locked. `false` snaps back to your previous view. Pair it with a `solix.settings.keybind` and the `keybind` / `keybindRelease` events. Released automatically when your plugin is disabled. |
 | `solix.view.dynamicFovScale` | Read/write number, 0..1 (default 1). Scales the vanilla "dynamic" FOV change from sprinting, speed/slowness and bow drawing. `0` = no FOV change at all (No Dynamic FOV). Set it: `solix.view.dynamicFovScale = 0`. |
 | `solix.render.fireScale(v)` | First-person fire overlay size, 0..1 (default 1). It shrinks toward the bottom of the screen; `0` hides it. |
 | `solix.render.offhandScale(v)` | First-person offhand item size, 0..1 (default 1). `0` hides it. Only your own view; others see nothing different. |
+| `solix.render.hitColor(c)` | Tint of the red hurt flash on entities, e.g. `"#80FFFFFF"`. Alpha scales the strength (`FF` = vanilla strength). `hitColor(null)` restores vanilla red. |
+| `solix.render.hitboxes(o)` | Draw entity hitbox outlines, only for entities you can actually see: invisible entities are skipped, and so is any entity whose box centre and all 8 corners are hidden behind blocks from the camera (and anything over 128 blocks away). Defaults: `players: true, mobs: true, items: false`, colour white. `hitboxes({enabled: false})` turns it off. F3+B (vanilla hitboxes) overrides it. |
 | `solix.combat.lastTarget` | The living entity you last hit, while it's alive, loaded and the hit was under 5 s ago, else `null`: `{name, type, health, maxHealth, armor, distance}` (`armor` = armour points 0..20). |
 | `solix.world.predictBreak(o)` | Opt-in client-side prediction. With `crystals: true`, an end crystal you hit is hidden at once instead of waiting for the server; if the server hasn't removed it within 1 s it comes back. `predictBreak({})` turns it off. `anchors` is accepted but currently does nothing: the 1.14.4 client has no respawn anchor block, so there is nothing to predict. |
 | `solix.options.setToggleSprint(on)` | Turns on the vanilla-style toggle-sprint behaviour: tapping the sprint key latches it. It never sprints on its own. |
@@ -98,7 +103,8 @@ Declare these in `plugin.json` `hooks`. Calls without the hook are refused and l
 | `crosshair` | Hide the vanilla crosshair while enabled (to draw its own) (1.1) |
 | `combat` | Know when you take damage (1.1), land or miss a hit, and see your last target (1.3) |
 | `fov` | Change your FOV limits and the sprint/speed FOV effect (1.3) |
-| `visuals` | Resize the fire overlay and your offhand item (1.3) |
+| `visuals` | Change visuals: fire/offhand size, hurt camera tilt, hit colour, entity hitboxes (1.3) |
+| `freelook` | Look around in third person without turning your player (1.3) |
 | `predict` | Hide end crystals you hit before the server confirms (1.3) |
 
 ## Pack format
@@ -295,12 +301,26 @@ tightest FOV range).
 | `solix.player.reach` | none | Your current entity attack reach in blocks (3 in survival/adventure, 6 in creative). |
 | `solix.combat.lastTarget` | `combat` | The living entity you last hit, while it's alive, loaded and the hit was under 5 s ago, else `null`: `{name, type, health, maxHealth, armor, distance}` (`armor` = armour points 0..20). |
 | `attack` event | `combat` | `solix.on("attack", (hit, targetName) => ...)`: fires when you swing. `hit` is `true` with the entity's name when your swing connected with an entity, `false` and `null` on a miss (swing at air). Swings at blocks don't fire it. |
+| `solix.player.inventory` | none | Your items: `[{id: "minecraft:totem_of_undying", name, count, slot}]`, empty slots left out. `slot` is `"0"`..`"35"` (hotbar is 0..8), `"head"`, `"chest"`, `"legs"`, `"feet"` or `"offhand"`. Shulker boxes are listed as the box item; their contents are never read or counted. |
+| `solix.player.countItem(id)` | none | Total count of an item id across inventory, armour and offhand. `"totem_of_undying"` and `"minecraft:totem_of_undying"` both work. Potions share the id `minecraft:potion` / `splash_potion`; use `inventory` names to split them. |
+| `solix.stats` | none | `{fps, ping, tps, cps, memory}`. `tps` is estimated from the server's time-update packets (about one per second; `20` in singleplayer, `null` outside a world). `cps` = your left clicks in the last second. `memory` = `{usedMB, totalMB, limitMB}` of the JS heap where the browser exposes it (Chromium), else `null`. |
+| `solix.view.hurtCamScale(s)` | `visuals` | Damage camera tilt, 0..1 (default 1). `0` = no tilt. |
+| `solix.render.hitColor(argb)` | `visuals` | Tint of the red hurt flash on entities, e.g. `"#80FFFFFF"`. Alpha scales the strength (`FF` = vanilla strength). `hitColor(null)` restores vanilla red. |
+| `solix.render.hitboxes({enabled, color, players, mobs, items})` | `visuals` | Draw entity hitbox outlines, only for entities you can actually see: invisible entities are skipped, and so is any entity whose box centre and all 8 corners are hidden behind blocks from the camera (and anything over 128 blocks away). Defaults: `players: true, mobs: true, items: false`, colour white. `hitboxes({enabled: false})` turns it off. F3+B (vanilla hitboxes) overrides it. |
+| `solix.view.freelook(active)` | `freelook` | While `true`, the mouse orbits a third-person camera around you; your real yaw/pitch, and so your movement direction, stay locked. `false` snaps back to your previous view. Pair it with a `solix.settings.keybind` and the `keybind` / `keybindRelease` events. Released automatically when your plugin is disabled. |
 | `solix.world.predictBreak({crystals, anchors})` | `predict` | Opt-in client-side prediction. With `crystals: true`, an end crystal you hit is hidden at once instead of waiting for the server; if the server hasn't removed it within 1 s it comes back. `predictBreak({})` turns it off. `anchors` is accepted but currently does nothing: the 1.14.4 client has no respawn anchor block, so there is nothing to predict. |
 
-Example (Combo Counter):
+Examples (Freelook, Combo Counter, Totem Counter):
 
 ```js
+// Freelook on a rebindable key
+var fl = solix.settings.keybind("key", "Freelook", "LEFT_ALT");
+solix.on("keybind", function (id) { if (id === "key") solix.view.freelook(true); });
+solix.on("keybindRelease", function (id) { if (id === "key") solix.view.freelook(false); });
+
 var combo = 0;
 solix.on("attack", function (hit) { combo = hit ? combo + 1 : 0; });
 solix.on("damage", function () { combo = 0; });
+
+var totems = solix.player ? solix.player.countItem("totem_of_undying") : 0;
 ```

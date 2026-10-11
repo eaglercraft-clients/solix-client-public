@@ -4,7 +4,9 @@
 - API 1.3: `view.setFovClamp(min, max)`, `view.dynamicFovScale`, `render.fireScale(s)`, `render.offhandScale(s)`,
   `player.lookingAt`, `player.lookingAtEntity`, `player.attackCooldown`, `player.reach`, `combat.lastTarget`,
   the `attack` event `(hit, targetName)` and `world.predictBreak({crystals, anchors})` (anchors is a no-op on 1.14.4).
-- New hooks: `fov`, `visuals`, `predict`; `combat` now also covers `attack` and `lastTarget`.
+- Also: `player.inventory`, `player.countItem(id)`, `solix.stats` {fps, ping, tps, cps, memory}, `view.hurtCamScale(s)`,
+  `view.freelook(active)`, `render.hitColor(argb)`, `render.hitboxes({enabled, color, players, mobs, items})` (visible entities only).
+- New hooks: `fov`, `visuals`, `predict`, `freelook`; `combat` now also covers `attack` and `lastTarget`.
 - Guides (`docs/`) and example packs (`examples/`) from solix-plugins.
 - `template/`: fixed 128x32 footprint below the vanilla FPS text (`x: 0, y: 0.12`) instead of resizing at the top-left.
 
