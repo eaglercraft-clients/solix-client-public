@@ -180,7 +180,7 @@ my-plugin.solixplugin
 | `id` | yes | `a-z 0-9 . _ -`, max 40 chars, unique. Installing a pack with the same id replaces the old one. |
 | `name`, `version`, `author`, `description` | no | Shown in the UI. |
 | `apiVersion` | yes | `1` for now. Packs that need a newer API than the client has are refused. |
-| `entry` | yes* | One file name, or an array of names that are evaluated in order. *Optional for resources-only packs (a `resources` declaration and no JS). |
+| `entry` | yes* | One file name, or an array of names that are evaluated in order. *Optional for resources-only or font-only packs (a `resources` / `font` declaration and no JS). |
 | `hooks` | no | What the plugin uses (see [Hooks](#hooks)). `permissions` is accepted as an alias. |
 | `icon`, `category` | no | Reserved for the UI. |
 | `resources` | no | (1.4) Ship an `assets/` folder that overlays the game's assets, see [Resource overrides](#resource-overrides-14). `true`/`"all"`, an array of kinds, or `{"kinds": [...], "priority": 0}`. |
@@ -367,3 +367,222 @@ solix.on("damage", function () { combo = 0; });
 
 var totems = solix.player ? solix.player.countItem("totem_of_undying") : 0;
 ```
+
+## API 1.4 additions
+
+Backward compatible. Feature-test with `(solix.apiMinor || 0) >= 4`. Two general systems instead of one-off knobs:
+`solix.gui` (anything about the GUI layer) and `solix.resources` (generic asset overrides for any resource path).
+GUI scale plugins and texture packs are just uses of them.
+
+| Addition | Hook | Details |
+| --- | --- | --- |
+| `solix.gui.setScale(n)` | `settings` | Fractional GUI scale, `0.5..4` in `0.25` steps (rounded). It is clamped so the GUI is never smaller than 320x240 GUI pixels; `setScale(0)` / `setScale("auto")` returns to the vanilla Video setting. If several plugins set it, the most recent live one wins. Reset when your plugin is disabled. |
+| `solix.gui.getScale()` | none | The scale in effect right now (may be fractional, may differ from what you asked for after clamping). |
+| `solix.gui.width` | none | Current GUI width in GUI pixels. |
+| `solix.gui.height` | none | Current GUI height in GUI pixels. |
+| `solix.gui.screen` | none | The open screen's class name, like `solix.client.screen`. |
+| `solix.resources.declared` | none | The kinds from your `plugin.json` `resources`. |
+| `solix.resources.reload()` | `resources` | Ask the client to reload resources (once, on the next tick). Toggling the plugin already does this. |
+| `solix.client.guiScale` | none | Same as `getScale()`, also in `tick` state. |
+
+### Resource overrides (1.4)
+
+A `.solixplugin` can contain an `assets/` folder laid out exactly like a resource pack (`assets/minecraft/textures/gui/widgets.png`,
+`assets/minecraft/lang/en_us.json`, `assets/minecraft/sounds/...`, `assets/minecraft/textures/font/ascii.png`, `.png.mcmeta`
+animation files, other namespaces too). Declare it in `plugin.json`:
+
+```json
+{ "id": "solix-look", "apiVersion": 1, "resources": { "kinds": ["gui"], "priority": 10 } }
+```
+
+- kinds: `all` (any path, like a full resource pack), `textures`, `gui` (`textures/gui/`), `fonts` (`font/`, `textures/font/`),
+  `sounds` (`sounds/`, `sounds.json`), `lang`, `models`, `blockstates`, `shaders`, `texts`, `particles`. Files outside the
+  declared kinds are ignored. `"resources": true` means `all`.
+- While the plugin is enabled its assets are mounted as an always-on resource pack **above** the user's resource packs.
+  Several plugin packs stack by `priority` (higher wins), then by id.
+- Enabling, disabling, removing or installing the plugin reloads resources once (the loading overlay shows briefly).
+- `entry` is optional for a resources-only pack. Encrypted packs (`SLXE`) work the same: assets are read after decryption,
+  in memory only.
+- `pack.png` comes from the pack `icon` if set.
+
+### Themed vanilla bits (1.4)
+
+With the vanilla skin on (Settings > Appearance), item tooltips and the tab list background now follow the active theme
+(accent border, charcoal fill). Everything else that vanilla draws from textures (hotbar, hearts, widgets, containers) can
+be reskinned with a `gui`/`textures` resource override.
+
+## API 1.5 additions
+
+Backward compatible. Feature-test with `(solix.apiMinor || 0) >= 5`. One general primitive: a post-process pipeline
+that any shader plugin (colour grading, bloom-ish blur chains, CRT, the eagler-shaders presets) is built on.
+
+| Addition | Hook | Details |
+| --- | --- | --- |
+| `solix.render.post.set(passes)` | `shaders` | Install your chain: `[{name, fragment: "shaders/grade.fsh", scale}]` (`fragment` = a file in your pack) or `{source: "glsl..."}` inline; a plain string is a fragment path. Up to 8 passes, 64 KB each. Passes run in order on the finished world image (after the hand, before the HUD/GUI); the last pass writes the screen. `scale` (0.0625..1) renders that pass at a fraction of the screen size (cheap blur chains). Replaces your previous chain; chains of several plugins run one after another in enable order. |
+| `solix.render.post.uniform(name, value)` | `shaders` | Set a uniform on every pass of your chain: a number, `[x, y]`, `[x, y, z]`, `[x, y, z, w]`, a boolean (sent as int), or `{int: true, value: [..]}` for `int`/`ivecN`. Values persist until the chain is replaced. |
+| `solix.render.post.uniforms(obj)` | `shaders` | Same, for every key of `obj`. Handy for presets: `uniforms({Saturation: 1.2, ENABLE_VIGNETTE: true})`. |
+| `solix.render.post.clear()` | `shaders` | Remove your chain. Also happens when the plugin is disabled. |
+| `shaderError` event | `shaders` | `solix.on("shaderError", msg => ...)`: your chain failed to compile/link (msg has the GL info log). The chain is dropped and the game renders without it; call `set` again with a fix. |
+
+Writing shaders: use vanilla / OptiFine-style GLSL 1.20 fragment shaders. The client strips `#version` and `precision`,
+maps `texture2D` and `gl_FragColor`, and turns any `varying vec2 <name>;` into the screen UV (0..1), so
+`varying vec2 texCoord;` works as-is. `#include "util.glsl"` (and `#moj_import`) pulls in another file from your pack.
+Code is compiled as GLSL ES (1.00 or 3.00 depending on the browser), so write float literals as `1.0`, not `1`.
+
+Built-in uniforms (declare the ones you use): `sampler2D DiffuseSampler` (previous pass, or the scene for the first),
+`sampler2D OriginalSampler` (the untouched scene), `vec2 InSize`, `vec2 OutSize`, `vec2 ScreenSize` (pixels), `float Time`
+(seconds), `float DayTime` (0..1, 0 = sunrise), `float RainStrength` (0..1).
+
+Safety: a pass only sees those two textures and your uniforms; there is no depth buffer, no world data and no way out
+of the GPU program. If anything throws while rendering, plugin post-processing is switched off until restart. Players
+can turn all plugin shaders off in **Settings > Video > Advanced > Plugin Shaders**.
+
+Not done yet (documented, not shipped): sky and water programs (`gbuffers_skybasic`, `gbuffers_water`), depth/normal
+buffers, shadow maps and OptiFine `shaders.properties` option screens. The 1.14 Eagler renderer draws terrain through
+its own fixed shader set, so these need renderer surgery; plugin options are done with `solix.settings` + `uniform`.
+
+Example: `plugins/eagler-shaders` ports the six NT9712/eagler-shaders presets (Apache-2.0) in about 15 lines of JS:
+
+```js
+var preset = solix.settings.choice("preset", "Preset", ["Noir", "Bright"], 0);
+function apply() { var id = ["noir_low", "bright_low"][preset.get()];
+  solix.render.post.set([{ name: id, fragment: id + ".fsh" }]); solix.render.post.uniforms(PRESETS[id]); }
+solix.on("enable", apply); solix.on("settingChange", apply);
+```
+
+## API 1.6 additions
+
+Backward compatible. Feature-test with `(solix.apiMinor || 0) >= 6`. One general screen-layout system, all behind the
+`gui` hook. Coordinates are GUI pixels (the same units as vanilla slot positions); container callbacks get the
+container's top-left as the origin, screen hooks get the screen's top-left.
+
+| Addition | Details |
+| --- | --- |
+| `solix.gui.layout(ids, spec)` | Re-lay out container screens. `ids`: a screen id, a class name, an array of them, or `"*"` for every container screen. Returns `{remove()}`. Re-applied every time a screen opens or resizes (and on creative tab switches). Several layouts for one screen merge in enable order (later wins per field). |
+| `spec.width`, `spec.height` | New screen size (vanilla `xSize`/`ySize`, e.g. 176x166); a number or `fn(info)`. Recentres the screen. `spec.offsetX/offsetY` nudge it. |
+| `spec.slots` | Move or hide slots: `{index: {x, y}}`, `{index: false}` (hidden), an array, or `fn(slots, info)` returning either. `slots[i] = {i, x, y, inv: "player"/"container", index, empty, item}`. Moved slots are moved for real, so hover, clicks, drags and shift-clicks follow them; hidden slots can't be clicked. |
+| `spec.title`, `spec.inventoryLabel` | `{x, y, color, shadow, hidden}` or `false` to hide. Covers every container title and the "Inventory" label. |
+| `spec.background(g, ctx)` | Draw your own background with the draw ctx. When set, the vanilla texture is skipped unless `spec.vanillaBackground: true` (note: vanilla progress arrows / the player model live in that layer). |
+| `spec.foreground(g, ctx)` | Draw over the slots and labels (under the cursor item and tooltips). |
+| `spec.hover`, `spec.drag` | Colours of the hovered-slot highlight and the drag-split highlight (default `#80FFFFFF`). |
+| `solix.gui.highlight({hover, drag})` | The same highlight colours for every container screen; a layout's own colours win. |
+| `solix.gui.onDraw("pre" \| "post", fn(g, ctx), ids?)` | Draw before / after any screen (menus, chat, options, containers). `ids` defaults to `"any"`. Returns `{remove()}`. |
+| `solix.gui.clearLayouts()` | Drop all of your layouts, draw hooks and highlights. |
+| `g.glass(x, y, w, h, {radius, dim, tint, alpha, blur, cut})` | Frosted panel: a blurred copy of what is behind it (world + screen tint). The blur is taken once per frame, by the first glass panel, at 1/4..1/16 resolution, and shared by every panel after it; so `blur` (0.25..2) only counts on that first panel. `dim` 0..1 darkens it (0.8), `tint` is laid on top, `cut` uses the Solix cut corners. Also works in HUD elements. Falls back to flat translucent glass when the player has glass turned off. |
+
+`ctx`: `{screen, cls, container, phase, width, height, mouseX, mouseY, xSize, ySize, left, top, partialTicks, theme, state, font}`
+(`mouseX/Y` are relative to the origin). Screen ids are the class name without `Screen`, in snake case: `inventory`,
+`creative`, `chest`, `shulker_box`, `crafting`, `furnace`, `blast_furnace`, `smoker`, `anvil`, `enchantment`,
+`brewing_stand`, `beacon`, `grindstone`, `loom`, `stonecutter`, `cartography_table`, `merchant`, `horse_inventory`,
+`hopper`, `dispenser`; menus are `main_menu`, `ingame_menu`, `chat`, `options`, ... (`solix.gui.screen` gives the class name).
+
+Safety: layouts only move slots and draw through the draw ctx. A pack can't click, read other screens' text fields or
+send packets, and positions are clamped. Errors count toward the usual 5-error auto-disable.
+
+```js
+solix.gui.layout("*", {
+  vanillaBackground: false, title: { color: solix.theme.text }, hover: "#40FFFFFF",
+  background: (g, c) => g.glass(0, 0, c.xSize, c.ySize, { radius: 6, tint: "#30101018", cut: true }),
+  slots: s => s.map(x => ({ x: x.x, y: x.y + 2 }))
+});
+```
+
+### Chat input masking + login vault (1.6)
+
+| Addition | Hook | Details |
+| --- | --- | --- |
+| `solix.chat.input.mask({prefixes, char})` | `chat` or `vault` | While the chat box text starts with one of `prefixes` (e.g. `["/login", "/l", "/register", "/reg", "/changepassword"]`), every non-space character after the command is drawn as `char` (default `*`). Display only: the text that is sent is unchanged. `mask(null)` clears. Rules are dropped when the plugin is disabled, so set them in `solix.on("enable", ...)`. A function form is not supported (rules run client-side, no per-keystroke JS). |
+| (always on) | | Messages starting with a masked prefix, or with `/login`, `/l`, `/register`, `/reg`, `/changepassword`, `/changepass`, `/cp`, are never added to the up-arrow chat history. Sent chat is never logged by the client. |
+| `solix.vault.save(host?)` | `vault` | Opens a client-drawn "Save login for <host>" dialog (default host = the server you are on). The password goes into the client's vault, never to the plugin. |
+| `solix.vault.has(host)`, `.hosts()` / `.list()` | `vault` | Which hosts have a saved login (host names only). |
+| `solix.vault.remove(host)` | `vault` | Forget one saved login. |
+| `solix.vault.autoLogin({host, trigger, command})` | `vault` | When a chat line matches `trigger` (a RegExp or Java-regex string, max 200 chars; default `/(login|l)\b`, case-insensitive) while you are connected to exactly `host` and a login is saved for it, the client sends `command` with `{pw}` replaced (default `/login {pw}`). At most once per join; the send bypasses chat history. Cleared when the plugin is disabled. |
+
+Vault storage: AES-256-GCM, key = SHA-256 of a random per-install key kept in browser storage (IndexedDB) plus a salt,
+with the host as associated data, so an entry only decrypts for the host it was saved for. Players can turn auto-login
+off and forget everything in **Settings > General > Saved Logins**. This keeps passwords away from plugins and out of
+screenshots/history; it is not protection against other code running in the same browser profile.
+
+## API 1.7 additions
+
+Backward compatible. Feature-test with `(solix.apiMinor || 0) >= 7`. 1.7 is about total conversions: a pack can restyle the game so nothing looks like Minecraft any more (fonts, item
+icons, every HUD element), using a richer vector draw context.
+
+### Pack fonts (1.7)
+
+Declare faces in `plugin.json`. The `default` face replaces the vanilla pixel font **everywhere** the game's font
+renderer draws (chat, every GUI, tooltips, HUD, item counts, signs, name tags), anti-aliased, kerned, colour codes kept.
+
+```json
+"font": { "default": "fonts/Rajdhani-SemiBold.ttf", "mono": "fonts/JetBrainsMono.otf", "scale": 1.0, "shadow": false }
+```
+
+* Files: `.ttf`, `.otf`, `.woff`, `.woff2` (rasterised once by the browser at 64 px into a mipmapped atlas, real
+  kerning pairs for ASCII), a BMFont text `.fnt` + its page PNG, or a Solix atlas `.png` + `.txt` (the
+  `tools/solix-assets` format). Paths are pack paths; `assets/` is tried as a prefix, then any file ending in the path.
+* `scale` (0.5-2) multiplies the cap height (vanilla = 7 GUI px); `shadow: false` drops vanilla drop shadows.
+* Strings with a character the face does not have fall back to the vanilla font for that string (so CJK chat still works).
+* Every face is usable from the draw context: `g.text("AMMO", x, y, {font: "mono", size: 14})`, measured by
+  `solix.util.textWidth(str, size, "mono")`. `solix.fonts.list()` / `solix.fonts.has(name)` tell you what loaded.
+  When two enabled packs declare the same name the first one wins.
+
+### Vector draw context (1.7)
+
+All of these are batched into the same vertex stream as the rest of `g` and anti-aliased with a 1 physical-pixel fringe.
+Points can be `[x, y, x, y, ...]`, `[[x, y], ...]` or `[{x, y}, ...]`.
+
+| call | what |
+| --- | --- |
+| `g.shape(x, y, w, h, {radius, cut, fill, gradient: [top, bottom], stroke, strokeWidth})` | rounded or angled (`cut: true`) rect with fill/gradient and outline |
+| `g.gradient(x, y, w, h, from, to, angle)` | `angle` in degrees (0 = left to right, 90 = top to bottom); omitted = vertical as before |
+| `g.line(x0, y0, x1, y1, width, color)` | thick line |
+| `g.polyline(points, width, color, closed)` | stroked path with round joins |
+| `g.polygon(points, color)` | filled polygon, convex or concave (no holes) |
+| `g.arc(cx, cy, r, a0, a1, width, color)` | stroked arc, radians, clockwise on screen |
+| `g.pie(cx, cy, r, a0, a1, color, inner)` | filled sector, or a ring segment when `inner > 0` |
+| `g.ring(cx, cy, r, width, color)` | full circle outline |
+| `g.svg(d, x, y, size, color, {viewBox: 24, stroke: 0})` | SVG path icon (`d` attribute, any path incl. holes); rasterised by the browser once per size and cached; `stroke > 0` strokes instead of fills |
+| `g.image(path, x, y, w, h, {tint, uv: [u0, v0, u1, v1]})` | a PNG from your pack at any resolution |
+| `g.item("hotbar:N" \| "inv:N" \| "mainhand" ..., x, y, size)` | real item icons, now for hotbar and inventory slots too |
+
+### Item icons (1.7)
+
+* **Flat sprites via resources**: any resource pack (or a plugin pack with `"resources": ["textures"]`) can ship
+  `assets/<namespace>/textures/solix/items/<item path>.png` (e.g. `assets/minecraft/textures/solix/items/diamond_sword.png`).
+  It replaces that item's GUI icon (slots, hotbar, creative tabs, tooltips) with the image drawn into the 16x16 slot box.
+  Any resolution works, no 16x16 limit. Reloaded with resources (F3+T).
+* **`solix.gui.itemRenderer(fn, {ids}?)`** (`gui` hook): `fn(g, ctx)` draws in the 16x16 slot box (`ctx`: `id count
+  damage maxDamage enchanted name size`). Return `true` to replace the icon; otherwise what you drew goes behind it
+  (rarity glow etc.). `ids` limits the call to those items (cheaper). `itemRenderer(null)` removes it.
+  Count and durability overlays stay vanilla (and use the pack font).
+
+### HUD replacement (1.7)
+
+`solix.hud.replace(id, fn, {vanilla: false})` (`hud` hook) hides a vanilla HUD element and calls `fn(g, ctx)` each frame
+instead. `ctx.width/height` = GUI size, coordinates are GUI pixels over the whole screen, `ctx.data` = what vanilla would
+have drawn. `fn = null` only hides it; `{vanilla: true}` keeps vanilla and draws on top. `hud.restore(id)` undoes it.
+Returns a handle with `remove()`.
+
+| id | `ctx.data` |
+| --- | --- |
+| `hotbar` | `{selected, offhand}` (use `g.item("hotbar:N", ...)` for icons) |
+| `health` | `{health, max, absorption, hardcore, poison, wither, regen, hurtTime}` |
+| `hunger` | `{food, saturation, hungerEffect}` |
+| `armor` | `{value}` |
+| `air` | `{air, max, underwater}` |
+| `xp` | `{level, progress, total}` |
+| `mount` | `{health, max, jump}` (horse health + jump bar) |
+| `crosshair` | null |
+| `bossbar` | `[{name, progress, color, overlay}]` |
+| `scoreboard` | `{title, lines: [{name, score}]}` (sidebar) |
+| `tablist` | `{visible, players: [{name, ping}]}` |
+| `chat` | `{open, lines: [{text, age}]}` (newest first, age in ticks; the chat input box itself stays vanilla) |
+| `actionbar` | `{text, time}` |
+| `title` | `{title, subtitle, time}` |
+| `selected` | `{name, time}` (held item name popup) |
+| `effects` | null (potion icons; read `solix.player.effects`) |
+| `toast` | `[{type, title, description, icon?, progress, age, visibility}]` — active vanilla toasts (`tutorial` / `advancement` / `recipe` / `system` / `friend`); `icon` is an item id when the toast has one; `progress` is 0..1; `age` is ms on screen; `visibility` is `"show"` / `"hide"`. The plugin draws all of them; `fn = null` hides them. |
+| `debug` | `{fps, x, y, z, facing, biome, chunks, f3Open, lines}` — Solix top-left FPS/XYZ overlay plus the F3 screen when open; `lines` is string[] (FPS/XYZ when F3 is closed, full F3 left column when open); `chunks` is the world-renderer debug string. |
+
+
+All replaced elements share one host call per frame and draw after the vanilla HUD, before plugin HUD elements.
