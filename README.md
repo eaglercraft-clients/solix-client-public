@@ -10,26 +10,30 @@ and particles, and a plugin system with a drag-and-drop HUD editor. You don't ne
 
 ## Play now
 
-* **JavaScript build** (works everywhere): https://solix-client.vercel.app/js/
-* **WASM-GC build** (faster, needs WebAssembly JSPI, e.g. Chrome 137+): https://solix-client.vercel.app/wasm/
+* **JavaScript build** (works everywhere): https://client.solxc.tech/js/
+* **WASM-GC build** (faster, needs WebAssembly JSPI, e.g. Chrome 137+): https://client.solxc.tech/wasm/
 
-* **Older versions:** https://solix-client.vercel.app/versions/ (each release stays playable, e.g. `/v0.3beta/js/`)
+* **Older versions:** https://client.solxc.tech/versions/ (the newest 3 betas + milestones like `/1.14/0.3beta/` stay playable; older builds are zips on [Releases](../../releases))
 
 **Featured server:** `play.solxc.tech` (SolixiteMC, the official SolixClient server; it's the **Play** button on the main menu)
 
 ## Offline download
 
-Always-latest direct links:
-[SolixClient-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-js.html) ·
+Latest (v0.3.12beta) direct links:
+[SolixClient-v0.3.12beta-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3.12beta/SolixClient-v0.3.12beta-js.html) ·
+[SolixClient-v0.3.12beta-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3.12beta/SolixClient-v0.3.12beta-wasm.html)
+(release: [v0.3.12beta](https://github.com/eaglercraft-clients/solix-client-public/releases/tag/v0.3.12beta)).
+Plugins install in-client from the GitHub catalog and EaglerTiers goes through the client.solxc.tech proxy, so both work offline-from-file too.
+Stable names (kept updated to the latest build): [SolixClient-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-js.html) ·
 [SolixClient-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-wasm.html) ·
 [solix-plugins.solixplugin.zip](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/solix-plugins.solixplugin.zip).
 The same HTML files are also in [`download/`](download/) in this repo. Or browse [Releases](../../releases):
 
 | File | What it is |
 | --- | --- |
-| `SolixClient-v0.3beta-js.html` | The whole client in one HTML file. Save it and open it in any browser. |
-| `SolixClient-v0.3beta-wasm.html` | The faster WASM-GC build in one file (needs JSPI, e.g. Chrome 137+). |
-| `solix-plugins-v0.3beta.solixplugin.zip` | Every bundled plugin pack in one zip. |
+| `SolixClient-v0.3.12beta-js.html` | The whole client in one HTML file. Save it and open it in any browser. |
+| `SolixClient-v0.3.12beta-wasm.html` | The faster WASM-GC build in one file (needs JSPI, e.g. Chrome 137+). |
+| `solix-plugins-v0.3beta.solixplugin.zip` | Every v0.3beta plugin pack in one zip (newer packs: [`plugins/`](plugins/)). |
 | `SolixClient-js.html`, `SolixClient-wasm.html`, `solix-plugins.solixplugin.zip` | The same files under stable names, always the latest. |
 | `*.solixplugin` | The same packs as individual files. |
 
