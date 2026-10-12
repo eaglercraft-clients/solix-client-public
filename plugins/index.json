@@ -1,0 +1,1001 @@
+{
+  "updated": "2026-10-12T00:02:52Z",
+  "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
+  "sets": [
+    {
+      "id": "pvp",
+      "name": "PvP Set",
+      "description": "Combat HUDs, alerts, and fight helpers \u2014 everything under the pvp category.",
+      "packs": [
+        "pvp-armor-alert",
+        "pvp-block-hud",
+        "pvp-click-streak",
+        "pvp-combat-bar",
+        "pvp-combo-counter",
+        "pvp-coords",
+        "pvp-cps-graph",
+        "pvp-crosshair",
+        "pvp-crystal-optimiser",
+        "pvp-damage-taken",
+        "pvp-death-counter",
+        "pvp-fight-timer",
+        "pvp-freelook",
+        "pvp-gapple-counter",
+        "pvp-gui-scale",
+        "pvp-health-food",
+        "pvp-hit-color",
+        "pvp-hitboxes",
+        "pvp-keystrokes",
+        "pvp-kill-feed",
+        "pvp-kill-screenshot",
+        "pvp-low-fire",
+        "pvp-low-health",
+        "pvp-mentions",
+        "pvp-no-dynamic-fov",
+        "pvp-no-hurt-cam",
+        "pvp-pearl-cooldown",
+        "pvp-potion-counter",
+        "pvp-potion-timers",
+        "pvp-reach-display",
+        "pvp-scope-zoom",
+        "pvp-session-stats",
+        "pvp-small-offhand",
+        "pvp-speedometer",
+        "pvp-sprint",
+        "pvp-statistics",
+        "pvp-target-hud",
+        "pvp-theme",
+        "pvp-timing-optimiser",
+        "pvp-totem-counter",
+        "pvp-totem-pops",
+        "pvp-weapon-durability"
+      ]
+    },
+    {
+      "id": "hud",
+      "name": "HUD Set",
+      "description": "On-screen readouts: FPS, CPS, armour, coords, keystrokes, session stats and more.",
+      "packs": [
+        "armor-hud",
+        "clock",
+        "cps",
+        "fps-ping",
+        "keystrokes",
+        "pvp-block-hud",
+        "pvp-combat-bar",
+        "pvp-coords",
+        "pvp-cps-graph",
+        "pvp-gapple-counter",
+        "pvp-health-food",
+        "pvp-keystrokes",
+        "pvp-potion-counter",
+        "pvp-potion-timers",
+        "pvp-session-stats",
+        "pvp-speedometer",
+        "pvp-statistics",
+        "pvp-target-hud",
+        "pvp-totem-counter",
+        "pvp-weapon-durability"
+      ]
+    },
+    {
+      "id": "visual",
+      "name": "Visual Set",
+      "description": "Solix Look, Zero Font, Eagler Shaders, and other visual polish packs.",
+      "packs": [
+        "solix-look",
+        "solix-zero-font",
+        "eagler-shaders",
+        "theme-vaporwave",
+        "pvp-theme",
+        "pvp-crosshair",
+        "pvp-hit-color",
+        "pvp-hitboxes",
+        "pvp-low-fire",
+        "pvp-no-hurt-cam",
+        "pvp-no-dynamic-fov",
+        "pvp-small-offhand"
+      ]
+    },
+    {
+      "id": "qol",
+      "name": "QoL Set",
+      "description": "Quality-of-life helpers: login, zoom, screenshots, sprint, mentions and scale.",
+      "packs": [
+        "auto-login",
+        "password-hider",
+        "zoom",
+        "screenshot-helper",
+        "toggle-sprint",
+        "pvp-sprint",
+        "pvp-gui-scale",
+        "pvp-freelook",
+        "pvp-scope-zoom",
+        "pvp-mentions",
+        "pvp-kill-screenshot",
+        "clock",
+        "fps-ping"
+      ]
+    },
+    {
+      "id": "all",
+      "name": "Install All",
+      "description": "Every pack bundled with the client. Already-installed packs are skipped.",
+      "all": true,
+      "packs": []
+    }
+  ],
+  "packs": [
+    {
+      "id": "armor-hud",
+      "name": "Armour HUD",
+      "version": "1.0.0",
+      "description": "Your armour pieces and held item with durability bars, laid out vertically or horizontally.",
+      "author": "Solix",
+      "category": "",
+      "file": "armor-hud.solixplugin",
+      "size": 1483,
+      "sha256": "7e269e14ec57648ddd704253b0b69919fcf9672168d21a56010b7dab4a492c6d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/armor-hud.solixplugin",
+      "sets": [
+        "hud"
+      ]
+    },
+    {
+      "id": "auto-login",
+      "name": "Auto-Login",
+      "version": "1.0.0",
+      "description": "Logs you in on servers where you saved a login. Passwords stay encrypted in the client and are only sent to the exact server they were saved for, once per join. Needs client API 1.6.",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "auto-login.solixplugin",
+      "size": 1292,
+      "sha256": "22ebb584775fd5bfc9166057863b60c03e80d60935e351f18dc09855450abc7d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/auto-login.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "clock",
+      "name": "Clock",
+      "version": "1.0.0",
+      "description": "Real-world time (12/24h, optional seconds and date) plus the in-game time of day. Written in Java and compiled to JS with TeaVM.",
+      "author": "Solix",
+      "category": "",
+      "file": "clock.solixplugin",
+      "size": 10362,
+      "sha256": "b57a4796010f0922e9057e96e80e0fd47207d1fe2358bc7d6a3b13bc830b8102",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/clock.solixplugin",
+      "sets": [
+        "hud",
+        "qol"
+      ]
+    },
+    {
+      "id": "cps",
+      "name": "CPS Counter",
+      "version": "1.0.0",
+      "description": "Clicks per second for left and right mouse, as a small standalone HUD element.",
+      "author": "Solix",
+      "category": "",
+      "file": "cps.solixplugin",
+      "size": 1102,
+      "sha256": "6ed86de29979d6327883ec6e7a2373ec95e93e5c21715e445e193ffbe94be44a",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/cps.solixplugin",
+      "sets": [
+        "hud"
+      ]
+    },
+    {
+      "id": "eagler-shaders",
+      "name": "Eagler Shaders",
+      "version": "1.0.0",
+      "description": "Six light/dark post-processing presets (NT9712/eagler-shaders, Apache-2.0). Needs client API 1.5.",
+      "author": "NT9712, ported by solix-plugins",
+      "category": "visuals",
+      "file": "eagler-shaders.solixplugin",
+      "size": 28135,
+      "sha256": "e073082a803bc050aa02290fedf56083a08f8ed509d21942de7459c7820137cf",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/eagler-shaders.solixplugin",
+      "sets": [
+        "visual"
+      ]
+    },
+    {
+      "id": "fps-ping",
+      "name": "FPS & Ping",
+      "version": "1.0.0",
+      "description": "A tidy glass pill showing your frame rate and server ping, coloured by how healthy they are.",
+      "author": "Solix",
+      "category": "",
+      "file": "fps-ping.solixplugin",
+      "size": 1385,
+      "sha256": "2296f10714b3ba753582f1d5e4b164ee5c0192b710eb007f57deeae206be6b94",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/fps-ping.solixplugin",
+      "sets": [
+        "hud",
+        "qol"
+      ]
+    },
+    {
+      "id": "keystrokes",
+      "name": "Keystrokes",
+      "version": "1.0.0",
+      "description": "WASD, space and mouse buttons that light up in your theme colour, with clicks-per-second under the mouse keys.",
+      "author": "Solix",
+      "category": "",
+      "file": "keystrokes.solixplugin",
+      "size": 1488,
+      "sha256": "d74df499b5a84bf5c6648997c0e45cfd0433dabf97647a40eb3c665f826d4b48",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/keystrokes.solixplugin",
+      "sets": [
+        "hud"
+      ]
+    },
+    {
+      "id": "password-hider",
+      "name": "Password Hider",
+      "version": "1.0.0",
+      "description": "While you type /login, /register and similar commands, everything after the command shows as a symbol you pick. Spaces stay visible, and the server still gets the real text. Needs client API 1.6.",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "password-hider.solixplugin",
+      "size": 1117,
+      "sha256": "d79dcf8255fc9da70577b8bc4bc486c007b3ff5c50457403a126f3ed6269dac3",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/password-hider.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-armor-alert",
+      "name": "Armour Alerts",
+      "version": "1.4.0",
+      "description": "Warns you with a flashing HUD badge and a toast when any armour piece (or your weapon) drops below a durability threshold.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-armor-alert.solixplugin",
+      "size": 3201,
+      "sha256": "44a0cdb2e859d9f456b869f498b2bddb2cfd2cbfc9083686f7557522a8a6b036",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-armor-alert.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-block-hud",
+      "name": "Block HUD",
+      "version": "1.0.0",
+      "description": "The block you're looking at: name, position, face and id. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-block-hud.solixplugin",
+      "size": 2673,
+      "sha256": "474ac47df27e0565a8e244f321b410604ecf6e029f72f4f474b19ce44bd2115a",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-block-hud.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-click-streak",
+      "name": "Click Streak",
+      "version": "1.4.0",
+      "description": "Counts unbroken runs of your own left clicks and keeps your best streak this session. It only counts clicks, not hits.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-click-streak.solixplugin",
+      "size": 2940,
+      "sha256": "6f20ee969e2197d63414046903ddbc0c0e6ace9441a7efa1ae27e99efa1845b9",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-click-streak.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-combat-bar",
+      "name": "Combat Bar",
+      "version": "1.4.0",
+      "description": "FPS and ping in one bar, with a ping history sparkline and jitter so you can tell when the connection is shaky.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-combat-bar.solixplugin",
+      "size": 3242,
+      "sha256": "ad4a2400f04dfda76222fbf13e4a8ed48f09d434dc1a855dbf3de6b192d741dc",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-combat-bar.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-combo-counter",
+      "name": "Combo Counter",
+      "version": "1.0.0",
+      "description": "Consecutive hits with no misses, each within 2 seconds of the last. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-combo-counter.solixplugin",
+      "size": 2885,
+      "sha256": "b9187b07e763dc8d172622d41e63e94cd006304d94578510b20bec12978b2e9b",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-combo-counter.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-coords",
+      "name": "Coords & Facing",
+      "version": "1.4.0",
+      "description": "Your XYZ, facing direction, exact yaw and dimension, with optional Nether/Overworld conversion.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-coords.solixplugin",
+      "size": 3051,
+      "sha256": "e223976ff1c530a35fbed0f7f193be160520003737642a15a7debaf97beded9c",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-coords.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-cps-graph",
+      "name": "PvP CPS Graph",
+      "version": "1.4.0",
+      "description": "Left and right clicks per second with a live scrolling graph of the last few seconds. Counts your own clicks only.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-cps-graph.solixplugin",
+      "size": 3205,
+      "sha256": "ec5c9494cf0f4262fcafc1b7a0c94544180f0eabdbe2eb4dff5c1b6fac2739e3",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-cps-graph.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-crosshair",
+      "name": "Custom Crosshair",
+      "version": "1.1.0",
+      "description": "A configurable crosshair overlay (cross, dot, circle, T or plus-with-dot) in any colour, with outline and gap options.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-crosshair.solixplugin",
+      "size": 1602,
+      "sha256": "b97adf856299f05468b7e3ffd981726a8c52c26ff396a009e96795b6b4b8d3ef",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-crosshair.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-crystal-optimiser",
+      "name": "Crystal Optimiser",
+      "version": "1.0.0",
+      "description": "Hides an end crystal as soon as you hit it; it comes back if the server doesn't confirm. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-crystal-optimiser.solixplugin",
+      "size": 731,
+      "sha256": "6e124225e713262c09645adf7e87a030d5e0e5c9373afda3844d4666ae821a3b",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-crystal-optimiser.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-damage-taken",
+      "name": "Damage Taken",
+      "version": "1.5.0",
+      "description": "Floating numbers for health you lose or regain, plus your last hit and total damage taken this life.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-damage-taken.solixplugin",
+      "size": 3532,
+      "sha256": "4ab649590f1ebf9104e5c76bc7b573e0f2e06ec832734461d58bcbe63c0575c5",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-damage-taken.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-death-counter",
+      "name": "Death Counter",
+      "version": "1.4.0",
+      "description": "Counts your deaths (when your health hits zero) and shows how long you've been alive since your last respawn.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-death-counter.solixplugin",
+      "size": 2992,
+      "sha256": "6d9948f7a933034aa747c79d43049c98b221ca201114ddbe289dc5cd35325c4d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-death-counter.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-fight-timer",
+      "name": "Fight Timer",
+      "version": "1.4.0",
+      "description": "Times each fight, starting when you begin clicking and ending after a few quiet seconds. Also shows the health you lost during it.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-fight-timer.solixplugin",
+      "size": 3130,
+      "sha256": "00e5c48343d30bb9780e248b55e550ddfbf9b0d565b99667078802afe5507a4c",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-fight-timer.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-freelook",
+      "name": "Freelook",
+      "version": "1.0.0",
+      "description": "Hold a key to look around without changing the way you move. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-freelook.solixplugin",
+      "size": 867,
+      "sha256": "6776c4854327f7b3bdc07e18074963a782d189f98a5a7377e91a1febd082a8f9",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-freelook.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-gapple-counter",
+      "name": "Gapple Counter",
+      "version": "1.0.0",
+      "description": "Golden apples in your inventory (not inside shulker boxes). Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-gapple-counter.solixplugin",
+      "size": 2551,
+      "sha256": "e5cc4207546c50011d1b52b8d4fc3a2394d7a9fc1a54b59876b25cc2c3198d5e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-gapple-counter.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-gui-scale",
+      "name": "GUI Scale",
+      "version": "1.0.0",
+      "description": "Set the in-game GUI scale in fine steps (0.5 to 4), with optional keys to step it up and down. Needs client API 1.5.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-gui-scale.solixplugin",
+      "size": 1038,
+      "sha256": "35937c081e76cddf01c9d2aa1732f4ad7c03f2ca03634fa2f5a8e458b1ce8c3e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-gui-scale.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-health-food",
+      "name": "Health & Food",
+      "version": "1.4.0",
+      "description": "Clean bars for your health and hunger with exact numbers, in hearts or HP.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-health-food.solixplugin",
+      "size": 2890,
+      "sha256": "6b0151ba2592a75d17d979c8eeaf21733f13064addeccdc1715d7c96e99e4392",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-health-food.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-hit-color",
+      "name": "Hit Color",
+      "version": "1.0.0",
+      "description": "Changes the hurt flash colour on entities. Visual only. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-hit-color.solixplugin",
+      "size": 861,
+      "sha256": "d5bb753238f3eeccf154d5da226d63675c81e1c8f034f90365f95f53f7ffc42b",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-hit-color.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-hitboxes",
+      "name": "Hitboxes",
+      "version": "1.0.0",
+      "description": "Outlines hitboxes of entities you can actually see (never invisible ones or ones behind walls). Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-hitboxes.solixplugin",
+      "size": 1044,
+      "sha256": "a64dd4ec004f098dac262044b2b97dca4bd57e8f55a16f1bfd0290fedadbd383",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-hitboxes.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-keystrokes",
+      "name": "PvP Keystrokes",
+      "version": "1.4.0",
+      "description": "Compact keystrokes for PvP: WASD, both mouse buttons with CPS, plus sneak and sprint.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-keystrokes.solixplugin",
+      "size": 3076,
+      "sha256": "252d862a8b331fe7cd64dc0643ceabd2307059feb5bc361cb01e083503b3fc07",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-keystrokes.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-kill-feed",
+      "name": "Kill Feed",
+      "version": "1.5.0",
+      "description": "A compact kill feed built from chat death messages, with your own kills and deaths highlighted.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-kill-feed.solixplugin",
+      "size": 4304,
+      "sha256": "19afe03d72316fb5a4a5d887546d571d9f4ecfa9a0e3505d777b4feef6ffd09e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-kill-feed.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-kill-screenshot",
+      "name": "Kill Screenshot",
+      "version": "1.3.0",
+      "description": "Takes a screenshot automatically when chat reports that you got a kill, with a small confirmation pill.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-kill-screenshot.solixplugin",
+      "size": 4100,
+      "sha256": "65280d7db054f78187467f838855195745e39a84c2a44d66072877eb59cacf6a",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-kill-screenshot.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-low-fire",
+      "name": "Low Fire",
+      "version": "1.0.0",
+      "description": "Shrinks the on-screen fire overlay (adjustable). Visual only. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-low-fire.solixplugin",
+      "size": 722,
+      "sha256": "9e6578b1d2c1695099776165477a1f648b53667b662b61f4f130f7e158a792d8",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-low-fire.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-low-health",
+      "name": "Low Health Warning",
+      "version": "1.5.0",
+      "description": "A full-screen red vignette that pulses faster the lower your health is, a quick edge flash when you take damage, and an optional badge and toast.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-low-health.solixplugin",
+      "size": 3863,
+      "sha256": "00a077ab0cb94a10633316671b9a112ffc77affc304a40aec33c63d8bdc3bc2e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-low-health.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-mentions",
+      "name": "Name Mentions",
+      "version": "1.5.0",
+      "description": "Pops chat lines that mention your name into a small HUD panel, with an optional toast, so you don't miss call-outs mid-fight.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-mentions.solixplugin",
+      "size": 3772,
+      "sha256": "066159be64619ee45155259ab7d5b837597aa02a4cf537f1031f9a0589339b4a",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-mentions.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-no-dynamic-fov",
+      "name": "No Dynamic FOV",
+      "version": "1.0.0",
+      "description": "Reduces or removes the FOV change from sprinting, effects and bows, with an optional FOV clamp. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-no-dynamic-fov.solixplugin",
+      "size": 963,
+      "sha256": "03ace947bfe96e1e4cb3597a80528c745358337225192a1e09c1c574cd223499",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-dynamic-fov.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-no-hurt-cam",
+      "name": "No Hurt Cam",
+      "version": "1.0.0",
+      "description": "Reduces or removes the camera tilt when you take damage. Visual only. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-no-hurt-cam.solixplugin",
+      "size": 744,
+      "sha256": "08c6083a2c3feac3b38ebf50905f68ca8489355c2eaf2f16d9b8c80573c8deea",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-hurt-cam.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-pearl-cooldown",
+      "name": "Pearl Cooldown",
+      "version": "1.0.0",
+      "description": "A thin bar under the crosshair for the ender pearl cooldown after you throw one.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-pearl-cooldown.solixplugin",
+      "size": 2751,
+      "sha256": "a5167cc16012746ffa671243789259df715bb90ca0207d9d560b8ed47b840d03",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-pearl-cooldown.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-potion-counter",
+      "name": "Potion Counter",
+      "version": "1.0.0",
+      "description": "Potions in your inventory (not inside shulker boxes). Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-potion-counter.solixplugin",
+      "size": 2658,
+      "sha256": "f0f58bec300bb94e16b37aefe9ed6912f63682b1bfa940f5f5c26ec980959012",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-potion-counter.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-potion-timers",
+      "name": "Potion Timers",
+      "version": "1.0.0",
+      "description": "Shows your active potion effects with the time left, soonest to expire first. Needs client API 1.1.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-potion-timers.solixplugin",
+      "size": 2861,
+      "sha256": "44c42fdbb1e2e25dac4fb30c76cc96d90377703bb2293d0cfe7427c92570e107",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-potion-timers.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-reach-display",
+      "name": "Reach Display",
+      "version": "1.0.0",
+      "description": "A crosshair ring when what you look at is within reach, plus a reach pill. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-reach-display.solixplugin",
+      "size": 2951,
+      "sha256": "5c33888bcd72dc100638547a33543ee9bc6e4e1724ceb4e4a42644a7362871e0",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-reach-display.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-scope-zoom",
+      "name": "Scope Zoom",
+      "version": "1.5.0",
+      "description": "Hold or toggle a key to zoom, with a full-screen scope mask, reticle and magnification readout while zoomed. Only narrows your own field of view.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-scope-zoom.solixplugin",
+      "size": 4034,
+      "sha256": "468e13a78e70c32aa67b1e1175c86ec376aa6140174e7a6604a1a462b7073952",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-scope-zoom.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-session-stats",
+      "name": "PvP Session Stats",
+      "version": "1.5.0",
+      "description": "Kills (read from chat death messages), deaths (when your health hits zero), K/D and kill streaks for this session.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-session-stats.solixplugin",
+      "size": 4107,
+      "sha256": "a5cac7af50bef257025e99689a5135277865ab5a62bf7d7e7fc60f59d30a707e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-session-stats.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-small-offhand",
+      "name": "Small Offhand",
+      "version": "1.0.0",
+      "description": "Draws your offhand item smaller (adjustable). Visual only. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-small-offhand.solixplugin",
+      "size": 727,
+      "sha256": "5b963eb00ae7abd6bd1baa369a185d7c7009e6a95f3cd6e8071b1872b6802ea0",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-small-offhand.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-speedometer",
+      "name": "Speedometer",
+      "version": "1.0.0",
+      "description": "Your own horizontal speed in blocks per second.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-speedometer.solixplugin",
+      "size": 2637,
+      "sha256": "0c20fde0cd083548511dc0944587cc31038f8f78c7733f95357539cb922dd1cb",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-speedometer.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-sprint",
+      "name": "Sprint & Sneak Status",
+      "version": "1.4.0",
+      "description": "Turns on toggle sprint (tap once to keep sprinting) with a key to switch it off and on, and shows your sprint and sneak state.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-sprint.solixplugin",
+      "size": 2900,
+      "sha256": "a1b921fca139563be9e45edf561a4fa5817ec7b89f8103278adfbbfebefc9e1d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-sprint.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-statistics",
+      "name": "Statistics",
+      "version": "1.0.0",
+      "description": "FPS, ping, estimated TPS, CPS and memory. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-statistics.solixplugin",
+      "size": 2763,
+      "sha256": "ebced9686e8795a2ad81342eb87fc170673cdadb37bc5842e86e5ed29c236b19",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-statistics.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-target-hud",
+      "name": "Target HUD",
+      "version": "1.0.0",
+      "description": "Name, health, armour and distance of what you last hit. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-target-hud.solixplugin",
+      "size": 2758,
+      "sha256": "1ae7f406e9814d9a3b0871a21e9f020f4ffb1ebb705f1449ad24584cecb04b6d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-target-hud.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-theme",
+      "name": "PvP Themes",
+      "version": "1.0.0",
+      "description": "Two PvP-styled Solix themes: Crimson (red on dark glass) and Frostbite (icy cyan).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-theme.solixplugin",
+      "size": 83437,
+      "sha256": "7abfa80bad83c97ac7533c1e841258c6f09c4586bd380b20e482dac64c39c56e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-theme.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-timing-optimiser",
+      "name": "Timing Optimiser",
+      "version": "1.0.0",
+      "description": "Attack cooldown bar under the crosshair that flashes when a full hit is ready. Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-timing-optimiser.solixplugin",
+      "size": 2945,
+      "sha256": "1c239db76d2e8c2bd7cd875713a345d0f1f863cdc6666d2cb3b194261c4b738b",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-timing-optimiser.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-totem-counter",
+      "name": "Totem Counter",
+      "version": "1.0.0",
+      "description": "Totems of Undying in your inventory (not inside shulker boxes). Needs client API 1.3.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-totem-counter.solixplugin",
+      "size": 2552,
+      "sha256": "70d1db546571156bdda49ab2bc595827c5af6eccb092f2f5075c0902e4ff6af0",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-totem-counter.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "pvp-totem-pops",
+      "name": "Totem Pops",
+      "version": "1.0.0",
+      "description": "Counts your own Totem of Undying pops this session and warns when you have none in hand.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-totem-pops.solixplugin",
+      "size": 2896,
+      "sha256": "b2d9ef5cd1007086ed35a981446b838c828a19e676251e5acfff8c2ea0bf9475",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-totem-pops.solixplugin",
+      "sets": [
+        "pvp"
+      ]
+    },
+    {
+      "id": "pvp-weapon-durability",
+      "name": "Weapon Durability",
+      "version": "1.4.0",
+      "description": "A durability bar for whatever you're holding, with remaining uses and a low-durability flash.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-weapon-durability.solixplugin",
+      "size": 2957,
+      "sha256": "aff1352a4b2ac3c2b9547759622462875007658838800fe6d3ca7f0cb4604569",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-weapon-durability.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
+      "id": "screenshot-helper",
+      "name": "Screenshot Helper",
+      "version": "1.0.0",
+      "description": "A one-key screenshot shortcut, a Screenshot button in the pause menu, and a little confirmation toast with a running count.",
+      "author": "Solix",
+      "category": "",
+      "file": "screenshot-helper.solixplugin",
+      "size": 1156,
+      "sha256": "3767f847dba9d069ab3140005b115bdab48948f26b1db96d85224c0ceb59f364",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/screenshot-helper.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "solix-look",
+      "name": "Solix Look",
+      "version": "0.4.1",
+      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7.",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "solix-look.solixplugin",
+      "size": 57672,
+      "sha256": "914aebcd510f93a1a73e9127a64feaf7763bc6f4bb379ea4b2ac25f5a633359c",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
+      "sets": [
+        "visual"
+      ]
+    },
+    {
+      "id": "solix-zero-font",
+      "name": "Solix Zero Font",
+      "version": "1.0.1",
+      "description": "Replaces the Minecraft pixel font everywhere with Rajdhani (text) and JetBrains Mono (numbers). Pairs with Solix Look's Zero Minecraft style. Fonts under the SIL Open Font License. Needs client API 1.7.",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "solix-zero-font.solixplugin",
+      "size": 284703,
+      "sha256": "f5896bd695935427d3493f77041461796d298fbd06dfdd210ec8c79e90f9c6f1",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-zero-font.solixplugin",
+      "sets": [
+        "visual"
+      ]
+    },
+    {
+      "id": "theme-vaporwave",
+      "name": "Vaporwave Theme",
+      "version": "1.0.0",
+      "description": "An example theme pack: hot pink accent, purple glass and a retro synthwave sunset behind the menus. Pick it under Settings > Appearance once enabled.",
+      "author": "Solix",
+      "category": "",
+      "file": "theme-vaporwave.solixplugin",
+      "size": 102044,
+      "sha256": "3538ae53496b99dcaeb866a07e01ccdd4b91938bdcaf2f1a72da188434c47466",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/theme-vaporwave.solixplugin",
+      "sets": [
+        "visual"
+      ]
+    },
+    {
+      "id": "toggle-sprint",
+      "name": "Toggle Sprint",
+      "version": "1.0.0",
+      "description": "Tap your sprint key once to keep sprinting, tap again to stop.",
+      "author": "Solix",
+      "category": "utility",
+      "file": "toggle-sprint.js",
+      "size": 1490,
+      "sha256": "6d5da1c4f77d503c344f63daf25072dd23266335a52a0fffbd15c4c1f62e3551",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/toggle-sprint.js",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "zoom",
+      "name": "Smooth Zoom",
+      "version": "1.0.0",
+      "description": "Hold (or toggle) a key to zoom in smoothly, OptiFine style. Only narrows your field of view; it can't see anything you couldn't already.",
+      "author": "Solix",
+      "category": "",
+      "file": "zoom.solixplugin",
+      "size": 922,
+      "sha256": "7b43bd8fa57d5979619c26fa219bc1a07be407530991d0c074ba0d0007b8ac8f",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/zoom.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    }
+  ]
+}
