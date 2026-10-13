@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T13:59:30Z",
+  "updated": "2026-10-13T15:31:02Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -8,7 +8,10 @@
       "description": "Combat HUDs, alerts, and fight helpers \u2014 everything under the pvp category.",
       "packs": [
         "pvp-armor-alert",
+        "pvp-arrow-hit-ping",
         "pvp-block-hud",
+        "pvp-block-outline",
+        "pvp-clear-water",
         "pvp-click-streak",
         "pvp-combat-bar",
         "pvp-combo-counter",
@@ -18,6 +21,7 @@
         "pvp-crystal-optimiser",
         "pvp-damage-taken",
         "pvp-death-counter",
+        "pvp-explosive-timer",
         "pvp-fight-timer",
         "pvp-freelook",
         "pvp-gapple-counter",
@@ -34,7 +38,10 @@
         "pvp-memory-usage",
         "pvp-mentions",
         "pvp-no-dynamic-fov",
+        "pvp-no-fog",
         "pvp-no-hurt-cam",
+        "pvp-no-rain",
+        "pvp-own-nametag",
         "pvp-pearl-cooldown",
         "pvp-potion-counter",
         "pvp-potion-timers",
@@ -43,6 +50,8 @@
         "pvp-session-stats",
         "pvp-shield-status",
         "pvp-small-offhand",
+        "pvp-smooth-elytra",
+        "pvp-smooth-sneak",
         "pvp-speedometer",
         "pvp-sprint",
         "pvp-statistics",
@@ -81,7 +90,9 @@
         "pvp-weapon-durability",
         "pvp-item-counter",
         "pvp-shield-status",
-        "pvp-memory-usage"
+        "pvp-memory-usage",
+        "pvp-explosive-timer",
+        "pvp-arrow-hit-ping"
       ]
     },
     {
@@ -100,7 +111,13 @@
         "pvp-low-fire",
         "pvp-no-hurt-cam",
         "pvp-no-dynamic-fov",
-        "pvp-small-offhand"
+        "pvp-small-offhand",
+        "pvp-block-outline",
+        "pvp-clear-water",
+        "pvp-custom-sky",
+        "pvp-no-rain",
+        "pvp-no-fog",
+        "pvp-own-nametag"
       ]
     },
     {
@@ -120,7 +137,12 @@
         "pvp-mentions",
         "pvp-kill-screenshot",
         "clock",
-        "fps-ping"
+        "fps-ping",
+        "chat-timestamps",
+        "chat-stacking",
+        "auto-gg",
+        "pvp-smooth-sneak",
+        "pvp-smooth-elytra"
       ]
     },
     {
@@ -148,6 +170,21 @@
       ]
     },
     {
+      "id": "auto-gg",
+      "name": "Auto GG",
+      "version": "1.0.0",
+      "description": "Says gg in chat when a game you are in ends (configurable patterns and message; optional after kills). Uses the client's rate-limited chat send (API 1.11).",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "auto-gg.solixplugin",
+      "size": 2060,
+      "sha256": "4a8fc415656eedc718bcd2389a7073a048e04ad9c632cd80c62d1428166fb6b9",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/auto-gg.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
       "id": "auto-login",
       "name": "Auto-Login",
       "version": "1.0.0",
@@ -158,6 +195,36 @@
       "size": 1292,
       "sha256": "22ebb584775fd5bfc9166057863b60c03e80d60935e351f18dc09855450abc7d",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/auto-login.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "chat-stacking",
+      "name": "Chat Stacking",
+      "version": "1.0.0",
+      "description": "Collapses repeated identical chat lines into one with an (xN) counter, and can hide lines matching your own patterns (API 1.11 chat pipeline).",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "chat-stacking.solixplugin",
+      "size": 1205,
+      "sha256": "69eb454a10850fee69b974a0668623737d96ebbcc1fcbbba5d85bca84059957d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/chat-stacking.solixplugin",
+      "sets": [
+        "qol"
+      ]
+    },
+    {
+      "id": "chat-timestamps",
+      "name": "Chat Timestamps",
+      "version": "1.0.0",
+      "description": "Prefixes incoming chat lines with the time they arrived, [HH:mm] or [HH:mm:ss] (API 1.11 chat pipeline).",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "chat-timestamps.solixplugin",
+      "size": 996,
+      "sha256": "65538c723e0af17ec5c19d30024b6647ad2f4a721f4df255633579f33ddace2d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/chat-timestamps.solixplugin",
       "sets": [
         "qol"
       ]
@@ -196,13 +263,13 @@
     {
       "id": "eagler-shaders",
       "name": "Eagler Shaders",
-      "version": "1.1.0",
-      "description": "Six tasteful post-processing looks (ACES filmic, soft bloom, vignette, sharpen) in low/medium/high, based on NT9712/eagler-shaders (Apache-2.0). Needs client API 1.5.",
+      "version": "1.2.0",
+      "description": "Six tasteful post-processing looks (ACES filmic, soft bloom, vignette, sharpen) in low/medium/high, with bloom pyramid, auto exposure, sun/moon glow, light TAA and automatic quality step-down on API 1.11. Based on NT9712/eagler-shaders (Apache-2.0).",
       "author": "NT9712, ported by solix-plugins",
       "category": "visuals",
       "file": "eagler-shaders.solixplugin",
-      "size": 13004,
-      "sha256": "30bc16848b3701de9668aed16436b635c7c0785221032e4b64ae7af4b18cc0ec",
+      "size": 12495,
+      "sha256": "89ba51b1aee90a40b7f318ad10517035deaa8a5c29369d6f1ae7cea892801aaf",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/eagler-shaders.solixplugin",
       "sets": [
         "visual"
@@ -283,6 +350,22 @@
       ]
     },
     {
+      "id": "pvp-arrow-hit-ping",
+      "name": "Arrow Hit Ping",
+      "version": "1.0.0",
+      "description": "Flashes a hit marker at your crosshair (and optionally a toast) when your arrow hits a player (API 1.11 projectileHit).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-arrow-hit-ping.solixplugin",
+      "size": 3072,
+      "sha256": "2000005ce1fbadad275c796ddefb949f4546133ce2f1c4d79567392de639e2b8",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-arrow-hit-ping.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
       "id": "pvp-block-hud",
       "name": "Block HUD",
       "version": "1.0.0",
@@ -296,6 +379,38 @@
       "sets": [
         "pvp",
         "hud"
+      ]
+    },
+    {
+      "id": "pvp-block-outline",
+      "name": "Block Outline",
+      "version": "1.0.0",
+      "description": "Custom colour, thickness and optional fill for the block selection outline, or hide it (API 1.11).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-block-outline.solixplugin",
+      "size": 1083,
+      "sha256": "964becb8d4ed1b0933ddf7166352336d20f859b136885cd8508c788aeb05a3c1",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-block-outline.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-clear-water",
+      "name": "Clear Water",
+      "version": "1.0.0",
+      "description": "Thins or removes underwater fog and the in-water screen overlay (API 1.11).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-clear-water.solixplugin",
+      "size": 991,
+      "sha256": "1a4276102d863c1859bc29e33fa31b02b8aac9ece5de5fd90a7843d904a21abf",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-clear-water.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
       ]
     },
     {
@@ -347,13 +462,13 @@
     {
       "id": "pvp-coords",
       "name": "Coords & Facing",
-      "version": "1.5.0",
+      "version": "1.6.0",
       "description": "Your XYZ, facing direction (N, NE, E...) and exact yaw, an optional separate Direction element, dimension, and Nether/Overworld conversion.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-coords.solixplugin",
-      "size": 3417,
-      "sha256": "2475a1609d1c27cda9973b1830860365dbd1f501ce398f8e080ea28823251f63",
+      "size": 3500,
+      "sha256": "4051080195b1ffc75d377416e63ba68596a1f5e9b60793c7530e2ddde2398ab2",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-coords.solixplugin",
       "sets": [
         "pvp",
@@ -379,13 +494,13 @@
     {
       "id": "pvp-crosshair",
       "name": "Custom Crosshair",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "description": "A configurable crosshair overlay (cross, dot, circle, T, X, chevron, square, diamond, triangle...) in any colour, with outline and gap options, and a target indicator that changes colour/shape when an entity is within reach.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-crosshair.solixplugin",
-      "size": 2472,
-      "sha256": "7180fe2a765d7c43421a4a2027551c253d169947458533907fe6672e6dccd9ac",
+      "size": 3439,
+      "sha256": "e0c8147640f1adbad79d123384585c2950fd52d3cdcf8942a7bf152bdcacc6bc",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-crosshair.solixplugin",
       "sets": [
         "pvp",
@@ -405,6 +520,21 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-crystal-optimiser.solixplugin",
       "sets": [
         "pvp"
+      ]
+    },
+    {
+      "id": "pvp-custom-sky",
+      "name": "Custom Sky",
+      "version": "1.0.0",
+      "description": "Recolours the sky and horizon/fog, and can hide stars, clouds or the sun and moon (API 1.11).",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "pvp-custom-sky.solixplugin",
+      "size": 1159,
+      "sha256": "8cb2113e992ac6163e74decdab5e535d558a0ad2c3df2e46e38e5ec1214ffa48",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-custom-sky.solixplugin",
+      "sets": [
+        "visual"
       ]
     },
     {
@@ -435,6 +565,22 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-death-counter.solixplugin",
       "sets": [
         "pvp"
+      ]
+    },
+    {
+      "id": "pvp-explosive-timer",
+      "name": "Explosive Timer",
+      "version": "1.0.0",
+      "description": "Fuse countdown for primed TNT and ignited creepers near you, as a HUD list with time left and distance (API 1.11 world entities).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-explosive-timer.solixplugin",
+      "size": 3216,
+      "sha256": "d2c987c7285730ffb010efebfa35a0c9f8bc77d807165fcd5718aa8ce7172f78",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-explosive-timer.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
       ]
     },
     {
@@ -658,13 +804,13 @@
     {
       "id": "pvp-memory-usage",
       "name": "Memory Usage",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "JS heap memory used by the client (where the browser exposes it), as used/limit, percent or MB.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-memory-usage.solixplugin",
-      "size": 2723,
-      "sha256": "b6a8c581adeea13c84db362a966ddd2a4abcc545d7fa2d66d2be867d1d058e02",
+      "size": 2753,
+      "sha256": "3ebf7b40a08212f74b65c5dd417f9ca20fab9f8697d5d43d422bc15e328090f8",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-memory-usage.solixplugin",
       "sets": [
         "pvp",
@@ -704,6 +850,22 @@
       ]
     },
     {
+      "id": "pvp-no-fog",
+      "name": "No Fog",
+      "version": "1.0.0",
+      "description": "Removes terrain distance fog or makes it thinner (API 1.11).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-no-fog.solixplugin",
+      "size": 1058,
+      "sha256": "1a6f4a123445fe2b55880d5254a61a8bd09d2fa1ae99cb6e74d9c7174f81ee85",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-fog.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
       "id": "pvp-no-hurt-cam",
       "name": "No Hurt Cam",
       "version": "1.0.0",
@@ -714,6 +876,38 @@
       "size": 744,
       "sha256": "08c6083a2c3feac3b38ebf50905f68ca8489355c2eaf2f16d9b8c80573c8deea",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-hurt-cam.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-no-rain",
+      "name": "No Rain",
+      "version": "1.0.0",
+      "description": "Hides rain (and its splash particles), snow and lightning bolts client-side; visual only (API 1.11).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-no-rain.solixplugin",
+      "size": 1037,
+      "sha256": "de7e9037ad043a3786604b2b4e76f77df6279d84799dced598c07194fb360896",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-rain.solixplugin",
+      "sets": [
+        "pvp",
+        "visual"
+      ]
+    },
+    {
+      "id": "pvp-own-nametag",
+      "name": "Own Nametag",
+      "version": "1.0.0",
+      "description": "Shows your own nametag in third person (F5), with an optional prefix/suffix on it and plate/shadow tweaks for all nametags (API 1.11).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-own-nametag.solixplugin",
+      "size": 1277,
+      "sha256": "d1e1ca28458f0f238179f74012199e7ddada85ea35ba9e3cab2981c299ed88d9",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-own-nametag.solixplugin",
       "sets": [
         "pvp",
         "visual"
@@ -829,13 +1023,13 @@
     {
       "id": "pvp-shield-status",
       "name": "Shield Status",
-      "version": "1.0.0",
-      "description": "Shows whether you hold or raise a shield, and its durability.",
+      "version": "1.1.0",
+      "description": "Shows whether you hold, raise or are blocking with a shield, the axe-disable cooldown (API 1.11) and its durability.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-shield-status.solixplugin",
-      "size": 2904,
-      "sha256": "132c7c657d859036fc99d294bf53d4725bdc8cd6445716c1eb8214fa83874a6d",
+      "size": 3264,
+      "sha256": "e91011ceff9d55f65b54422db0c57e8dd507e83a2aa746dfcb4f9a3b01e6158b",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-shield-status.solixplugin",
       "sets": [
         "pvp",
@@ -859,15 +1053,47 @@
       ]
     },
     {
+      "id": "pvp-smooth-elytra",
+      "name": "Elytra Camera Roll",
+      "version": "1.0.0",
+      "description": "Rolls the first-person camera into turns while flying with an elytra (API 1.11 camera).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-smooth-elytra.solixplugin",
+      "size": 910,
+      "sha256": "5f9c01e81e0734a967ba7ed2413459528796e2076659713ac9ed1498da1f6b59",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-smooth-elytra.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
+      "id": "pvp-smooth-sneak",
+      "name": "Smooth Sneak",
+      "version": "1.0.0",
+      "description": "Eases the camera height smoothly when you sneak and unsneak instead of snapping (API 1.11 camera).",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-smooth-sneak.solixplugin",
+      "size": 883,
+      "sha256": "ef3767d1a9dafa6414c15d7643263458f218416067abf4f172ee4cd6e5b00545",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-smooth-sneak.solixplugin",
+      "sets": [
+        "pvp",
+        "qol"
+      ]
+    },
+    {
       "id": "pvp-speedometer",
       "name": "Speedometer",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "description": "Your own horizontal speed in blocks per second.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-speedometer.solixplugin",
-      "size": 2634,
-      "sha256": "0c63ca19ceb1d70ed6ac0b3923d5056195c3cb174958c3b0dd5b467f33d9e4aa",
+      "size": 2710,
+      "sha256": "4f75c2c5b2bbb5159d36b9ba99c4b69068d04921799c174fcf80497922684106",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-speedometer.solixplugin",
       "sets": [
         "pvp",
@@ -877,13 +1103,13 @@
     {
       "id": "pvp-sprint",
       "name": "Sprint & Sneak Status",
-      "version": "1.6.0",
+      "version": "1.7.0",
       "description": "Toggle sprint (tap once to keep sprinting) with an on/off setting and key, plus sprint/sneak status as pills, text ([Sprinting (Toggled)] / Sprint: ON) or an icon.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-sprint.solixplugin",
-      "size": 3163,
-      "sha256": "7f3e343a2791958acd53a7e94f94c6e3bf96339be353a13e662429a711b51229",
+      "size": 3273,
+      "sha256": "b19d7de332557ea6bd9e06089937d35e8d829c9b2e0e41250a823040edbf9ad4",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-sprint.solixplugin",
       "sets": [
         "pvp",

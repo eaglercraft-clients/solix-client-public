@@ -6,7 +6,10 @@
       "description": "Combat HUDs, alerts, and fight helpers \u2014 everything under the pvp category.",
       "packs": [
         "pvp-armor-alert",
+        "pvp-arrow-hit-ping",
         "pvp-block-hud",
+        "pvp-block-outline",
+        "pvp-clear-water",
         "pvp-click-streak",
         "pvp-combat-bar",
         "pvp-combo-counter",
@@ -16,6 +19,7 @@
         "pvp-crystal-optimiser",
         "pvp-damage-taken",
         "pvp-death-counter",
+        "pvp-explosive-timer",
         "pvp-fight-timer",
         "pvp-freelook",
         "pvp-gapple-counter",
@@ -32,7 +36,10 @@
         "pvp-memory-usage",
         "pvp-mentions",
         "pvp-no-dynamic-fov",
+        "pvp-no-fog",
         "pvp-no-hurt-cam",
+        "pvp-no-rain",
+        "pvp-own-nametag",
         "pvp-pearl-cooldown",
         "pvp-potion-counter",
         "pvp-potion-timers",
@@ -41,6 +48,8 @@
         "pvp-session-stats",
         "pvp-shield-status",
         "pvp-small-offhand",
+        "pvp-smooth-elytra",
+        "pvp-smooth-sneak",
         "pvp-speedometer",
         "pvp-sprint",
         "pvp-statistics",
@@ -79,7 +88,9 @@
         "pvp-weapon-durability",
         "pvp-item-counter",
         "pvp-shield-status",
-        "pvp-memory-usage"
+        "pvp-memory-usage",
+        "pvp-explosive-timer",
+        "pvp-arrow-hit-ping"
       ]
     },
     {
@@ -98,7 +109,13 @@
         "pvp-low-fire",
         "pvp-no-hurt-cam",
         "pvp-no-dynamic-fov",
-        "pvp-small-offhand"
+        "pvp-small-offhand",
+        "pvp-block-outline",
+        "pvp-clear-water",
+        "pvp-custom-sky",
+        "pvp-no-rain",
+        "pvp-no-fog",
+        "pvp-own-nametag"
       ]
     },
     {
@@ -118,7 +135,12 @@
         "pvp-mentions",
         "pvp-kill-screenshot",
         "clock",
-        "fps-ping"
+        "fps-ping",
+        "chat-timestamps",
+        "chat-stacking",
+        "auto-gg",
+        "pvp-smooth-sneak",
+        "pvp-smooth-elytra"
       ]
     },
     {
