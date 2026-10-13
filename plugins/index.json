@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T12:40:39Z",
+  "updated": "2026-10-13T13:16:25Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -807,13 +807,13 @@
     {
       "id": "pvp-speedometer",
       "name": "Speedometer",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Your own horizontal speed in blocks per second.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-speedometer.solixplugin",
-      "size": 2637,
-      "sha256": "0c20fde0cd083548511dc0944587cc31038f8f78c7733f95357539cb922dd1cb",
+      "size": 2634,
+      "sha256": "0c63ca19ceb1d70ed6ac0b3923d5056195c3cb174958c3b0dd5b467f33d9e4aa",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-speedometer.solixplugin",
       "sets": [
         "pvp",
@@ -823,13 +823,13 @@
     {
       "id": "pvp-sprint",
       "name": "Sprint & Sneak Status",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "description": "Turns on toggle sprint (tap once to keep sprinting) with a key to switch it off and on, and shows your sprint and sneak state.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-sprint.solixplugin",
-      "size": 2900,
-      "sha256": "a1b921fca139563be9e45edf561a4fa5817ec7b89f8103278adfbbfebefc9e1d",
+      "size": 2903,
+      "sha256": "853e1601079d027089dac0180a5bdaddce5d6d9c0d71d0ea49abe5625fb94634",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-sprint.solixplugin",
       "sets": [
         "pvp",
@@ -964,13 +964,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.4.2",
+      "version": "0.5.1",
       "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 59820,
-      "sha256": "1955fdbe291914ab855da73af086a063347bbef474f9e950c9be6292f3888d0c",
+      "size": 207128,
+      "sha256": "1d20ce6bf4819489acc48e955a5fdd78be0d1ed0b06525f09e8f902303ad9846",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
@@ -1009,13 +1009,13 @@
     {
       "id": "toggle-sprint",
       "name": "Toggle Sprint",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Tap your sprint key once to keep sprinting, tap again to stop.",
       "author": "Solix",
       "category": "utility",
       "file": "toggle-sprint.js",
       "size": 1490,
-      "sha256": "6d5da1c4f77d503c344f63daf25072dd23266335a52a0fffbd15c4c1f62e3551",
+      "sha256": "ba3772b04176c8505a57ef63b216c24680114ee4c46fc3fdf33c1e1829419023",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/toggle-sprint.js",
       "sets": [
         "qol"
