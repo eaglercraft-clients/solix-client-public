@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T13:49:48Z",
+  "updated": "2026-10-13T13:59:30Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -196,13 +196,13 @@
     {
       "id": "eagler-shaders",
       "name": "Eagler Shaders",
-      "version": "1.0.1",
-      "description": "Six light/dark post-processing presets (NT9712/eagler-shaders, Apache-2.0). Needs client API 1.5.",
+      "version": "1.1.0",
+      "description": "Six tasteful post-processing looks (ACES filmic, soft bloom, vignette, sharpen) in low/medium/high, based on NT9712/eagler-shaders (Apache-2.0). Needs client API 1.5.",
       "author": "NT9712, ported by solix-plugins",
       "category": "visuals",
       "file": "eagler-shaders.solixplugin",
-      "size": 28192,
-      "sha256": "144f6a31957864786a7f2e46c9283c0b4ac787521caffd95e8204b25069a2bf9",
+      "size": 13004,
+      "sha256": "30bc16848b3701de9668aed16436b635c7c0785221032e4b64ae7af4b18cc0ec",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/eagler-shaders.solixplugin",
       "sets": [
         "visual"
