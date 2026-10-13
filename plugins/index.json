@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T13:16:25Z",
+  "updated": "2026-10-13T13:36:45Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -25,11 +25,13 @@
         "pvp-health-food",
         "pvp-hit-color",
         "pvp-hitboxes",
+        "pvp-item-counter",
         "pvp-keystrokes",
         "pvp-kill-feed",
         "pvp-kill-screenshot",
         "pvp-low-fire",
         "pvp-low-health",
+        "pvp-memory-usage",
         "pvp-mentions",
         "pvp-no-dynamic-fov",
         "pvp-no-hurt-cam",
@@ -39,6 +41,7 @@
         "pvp-reach-display",
         "pvp-scope-zoom",
         "pvp-session-stats",
+        "pvp-shield-status",
         "pvp-small-offhand",
         "pvp-speedometer",
         "pvp-sprint",
@@ -75,7 +78,10 @@
         "pvp-statistics",
         "pvp-target-hud",
         "pvp-totem-counter",
-        "pvp-weapon-durability"
+        "pvp-weapon-durability",
+        "pvp-item-counter",
+        "pvp-shield-status",
+        "pvp-memory-usage"
       ]
     },
     {
@@ -128,14 +134,14 @@
   "packs": [
     {
       "id": "armor-hud",
-      "name": "Armour HUD",
-      "version": "1.0.0",
-      "description": "Your armour pieces and held item with durability bars, laid out vertically or horizontally.",
+      "name": "Armour Durability HUD",
+      "version": "1.1.0",
+      "description": "Armour Durability HUD: each armour piece (plus held and offhand items) with a durability bar and percent, remaining or remaining/max, vertical or horizontal.",
       "author": "Solix",
       "category": "",
       "file": "armor-hud.solixplugin",
-      "size": 1483,
-      "sha256": "7e269e14ec57648ddd704253b0b69919fcf9672168d21a56010b7dab4a492c6d",
+      "size": 1902,
+      "sha256": "b88edecdc12be9e0e460c3029ae64d75bb459097af0c9243bfba4790cbeb4ca9",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/armor-hud.solixplugin",
       "sets": [
         "hud"
@@ -341,13 +347,13 @@
     {
       "id": "pvp-coords",
       "name": "Coords & Facing",
-      "version": "1.4.0",
-      "description": "Your XYZ, facing direction, exact yaw and dimension, with optional Nether/Overworld conversion.",
+      "version": "1.5.0",
+      "description": "Your XYZ, facing direction (N, NE, E...) and exact yaw, an optional separate Direction element, dimension, and Nether/Overworld conversion.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-coords.solixplugin",
-      "size": 3051,
-      "sha256": "e223976ff1c530a35fbed0f7f193be160520003737642a15a7debaf97beded9c",
+      "size": 3417,
+      "sha256": "2475a1609d1c27cda9973b1830860365dbd1f501ce398f8e080ea28823251f63",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-coords.solixplugin",
       "sets": [
         "pvp",
@@ -373,13 +379,13 @@
     {
       "id": "pvp-crosshair",
       "name": "Custom Crosshair",
-      "version": "1.1.0",
-      "description": "A configurable crosshair overlay (cross, dot, circle, T or plus-with-dot) in any colour, with outline and gap options.",
+      "version": "1.2.0",
+      "description": "A configurable crosshair overlay (cross, dot, circle, T, X, chevron, square, diamond, triangle...) in any colour, with outline and gap options, and a target indicator that changes colour/shape when an entity is within reach.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-crosshair.solixplugin",
-      "size": 1602,
-      "sha256": "b97adf856299f05468b7e3ffd981726a8c52c26ff396a009e96795b6b4b8d3ef",
+      "size": 2472,
+      "sha256": "7180fe2a765d7c43421a4a2027551c253d169947458533907fe6672e6dccd9ac",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-crosshair.solixplugin",
       "sets": [
         "pvp",
@@ -556,6 +562,22 @@
       ]
     },
     {
+      "id": "pvp-item-counter",
+      "name": "Item Counter",
+      "version": "1.0.0",
+      "description": "Counts any items you choose (comma list of ids, default arrows, golden apples, ender pearls) in small pills with their icons.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-item-counter.solixplugin",
+      "size": 3501,
+      "sha256": "02ba94cfc253337c68f4e6b6117a99e7e2b17e0a126ce7a466d29e5b5563de6c",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-item-counter.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
       "id": "pvp-keystrokes",
       "name": "PvP Keystrokes",
       "version": "1.4.0",
@@ -631,6 +653,22 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-low-health.solixplugin",
       "sets": [
         "pvp"
+      ]
+    },
+    {
+      "id": "pvp-memory-usage",
+      "name": "Memory Usage",
+      "version": "1.0.0",
+      "description": "JS heap memory used by the client (where the browser exposes it), as used/limit, percent or MB.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-memory-usage.solixplugin",
+      "size": 2723,
+      "sha256": "b6a8c581adeea13c84db362a966ddd2a4abcc545d7fa2d66d2be867d1d058e02",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-memory-usage.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
       ]
     },
     {
@@ -727,14 +765,14 @@
     },
     {
       "id": "pvp-potion-timers",
-      "name": "Potion Timers",
-      "version": "1.0.0",
-      "description": "Shows your active potion effects with the time left, soonest to expire first. Needs client API 1.1.",
+      "name": "Status Effects",
+      "version": "1.1.0",
+      "description": "Full status effect HUD: an icon per effect, level in roman numerals, time left, blinking when about to run out; can hide the vanilla effect icons. Needs client API 1.1.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-potion-timers.solixplugin",
-      "size": 2861,
-      "sha256": "44c42fdbb1e2e25dac4fb30c76cc96d90377703bb2293d0cfe7427c92570e107",
+      "size": 4115,
+      "sha256": "cc373fe75f1044d406ea2ad7267205d08acbd7ba44e5896f4e987baa7d90fb97",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-potion-timers.solixplugin",
       "sets": [
         "pvp",
@@ -789,6 +827,22 @@
       ]
     },
     {
+      "id": "pvp-shield-status",
+      "name": "Shield Status",
+      "version": "1.0.0",
+      "description": "Shows whether you hold or raise a shield, and its durability.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-shield-status.solixplugin",
+      "size": 2904,
+      "sha256": "132c7c657d859036fc99d294bf53d4725bdc8cd6445716c1eb8214fa83874a6d",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-shield-status.solixplugin",
+      "sets": [
+        "pvp",
+        "hud"
+      ]
+    },
+    {
       "id": "pvp-small-offhand",
       "name": "Small Offhand",
       "version": "1.0.0",
@@ -823,13 +877,13 @@
     {
       "id": "pvp-sprint",
       "name": "Sprint & Sneak Status",
-      "version": "1.5.0",
-      "description": "Turns on toggle sprint (tap once to keep sprinting) with a key to switch it off and on, and shows your sprint and sneak state.",
+      "version": "1.6.0",
+      "description": "Toggle sprint (tap once to keep sprinting) with an on/off setting and key, plus sprint/sneak status as pills, text ([Sprinting (Toggled)] / Sprint: ON) or an icon.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-sprint.solixplugin",
-      "size": 2903,
-      "sha256": "853e1601079d027089dac0180a5bdaddce5d6d9c0d71d0ea49abe5625fb94634",
+      "size": 3163,
+      "sha256": "7f3e343a2791958acd53a7e94f94c6e3bf96339be353a13e662429a711b51229",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-sprint.solixplugin",
       "sets": [
         "pvp",

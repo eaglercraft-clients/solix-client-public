@@ -3,7 +3,7 @@
     {
       "id": "pvp",
       "name": "PvP Set",
-      "description": "Combat HUDs, alerts, and fight helpers — everything under the pvp category.",
+      "description": "Combat HUDs, alerts, and fight helpers \u2014 everything under the pvp category.",
       "packs": [
         "pvp-armor-alert",
         "pvp-block-hud",
@@ -23,11 +23,13 @@
         "pvp-health-food",
         "pvp-hit-color",
         "pvp-hitboxes",
+        "pvp-item-counter",
         "pvp-keystrokes",
         "pvp-kill-feed",
         "pvp-kill-screenshot",
         "pvp-low-fire",
         "pvp-low-health",
+        "pvp-memory-usage",
         "pvp-mentions",
         "pvp-no-dynamic-fov",
         "pvp-no-hurt-cam",
@@ -37,6 +39,7 @@
         "pvp-reach-display",
         "pvp-scope-zoom",
         "pvp-session-stats",
+        "pvp-shield-status",
         "pvp-small-offhand",
         "pvp-speedometer",
         "pvp-sprint",
@@ -73,7 +76,10 @@
         "pvp-statistics",
         "pvp-target-hud",
         "pvp-totem-counter",
-        "pvp-weapon-durability"
+        "pvp-weapon-durability",
+        "pvp-item-counter",
+        "pvp-shield-status",
+        "pvp-memory-usage"
       ]
     },
     {
