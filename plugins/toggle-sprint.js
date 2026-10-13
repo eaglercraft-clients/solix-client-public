@@ -1,7 +1,7 @@
 // ==SolixPlugin==
 // @id          toggle-sprint
 // @name        Toggle Sprint
-// @version     1.0.1
+// @version     1.0.2
 // @author      Solix
 // @description Tap your sprint key once to keep sprinting, tap again to stop. Works like the vanilla accessibility toggle. Shows a small indicator.
 // @api         1
@@ -18,7 +18,7 @@ solix.on("enable", function () { solix.options.setToggleSprint(true); });
 solix.on("disable", function () { solix.options.setToggleSprint(false); });
 
 solix.hud.register({
-  id: "status", name: "Sprint indicator", width: 120, height: 14, x: 0.0, y: 0.0,
+  id: "status", name: "Sprint indicator", width: 120, height: 14, x: 0.2, y: 0.07,
   render: function (g, ctx) {
     var input = (ctx.state && ctx.state.input) || {};
     if (!indicator.get() || (!input.sprint && !ctx.editing)) return { width: 1, height: 1 };

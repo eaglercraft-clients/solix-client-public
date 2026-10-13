@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T13:36:45Z",
+  "updated": "2026-10-13T13:49:48Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -135,13 +135,13 @@
     {
       "id": "armor-hud",
       "name": "Armour Durability HUD",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "Armour Durability HUD: each armour piece (plus held and offhand items) with a durability bar and percent, remaining or remaining/max, vertical or horizontal.",
       "author": "Solix",
       "category": "",
       "file": "armor-hud.solixplugin",
-      "size": 1902,
-      "sha256": "b88edecdc12be9e0e460c3029ae64d75bb459097af0c9243bfba4790cbeb4ca9",
+      "size": 1901,
+      "sha256": "722a2a22abc9075b423a0fe65b638725b60f7aacf4c82cd52cc42f694d868e7a",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/armor-hud.solixplugin",
       "sets": [
         "hud"
@@ -1018,13 +1018,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.5.1",
+      "version": "0.5.2",
       "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 207128,
-      "sha256": "1d20ce6bf4819489acc48e955a5fdd78be0d1ed0b06525f09e8f902303ad9846",
+      "size": 207770,
+      "sha256": "f2a18538abbcc74c00d697271be246b228d9fa5fd9b87524f5598f0075d194c9",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
@@ -1068,8 +1068,8 @@
       "author": "Solix",
       "category": "utility",
       "file": "toggle-sprint.js",
-      "size": 1490,
-      "sha256": "ba3772b04176c8505a57ef63b216c24680114ee4c46fc3fdf33c1e1829419023",
+      "size": 1491,
+      "sha256": "b035c806f171dc36757d9cf440527fcece6626d868403bc66fbcfe73c8a9d301",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/toggle-sprint.js",
       "sets": [
         "qol"
