@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-12T00:02:52Z",
+  "updated": "2026-10-13T12:38:01Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -249,6 +249,19 @@
       ]
     },
     {
+      "id": "pvp-animation-remover",
+      "name": "Animation Remover",
+      "version": "1.0.0",
+      "description": "Turn off the totem pop overlay, hurt and death camera tilt, item pickup, view bob, re-equip dip and nausea warp. Needs client API 1.9.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-animation-remover.solixplugin",
+      "size": 903,
+      "sha256": "92b36229bb48afb97bd3cccd38bc16395edbe2d42eeae69ecfc2cbf5a6a5f632",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-animation-remover.solixplugin",
+      "sets": []
+    },
+    {
       "id": "pvp-armor-alert",
       "name": "Armour Alerts",
       "version": "1.4.0",
@@ -448,6 +461,19 @@
         "pvp",
         "qol"
       ]
+    },
+    {
+      "id": "pvp-fullbright",
+      "name": "Fullbright",
+      "version": "1.0.0",
+      "description": "See in caves and at night without night vision (lightmap override, adjustable). Visual only. Needs client API 1.9.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-fullbright.solixplugin",
+      "size": 710,
+      "sha256": "6e38a5c98b5daa69e4d5ccad001bf3b5368318b56d5ef80eab5e844680710611",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-fullbright.solixplugin",
+      "sets": []
     },
     {
       "id": "pvp-gapple-counter",
@@ -654,6 +680,19 @@
         "pvp",
         "visual"
       ]
+    },
+    {
+      "id": "pvp-particle-remover",
+      "name": "Particle Remover",
+      "version": "1.0.0",
+      "description": "Hide particle types one by one: crystal explosions, totem pops, crits, sweeps, block breaking, potions and more. Needs client API 1.9.",
+      "author": "solix-plugins",
+      "category": "pvp",
+      "file": "pvp-particle-remover.solixplugin",
+      "size": 1108,
+      "sha256": "373597cf7172f3274f992165bc496dfbe5d14c53a7ef88a1a6df6256b4da4b3a",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-particle-remover.solixplugin",
+      "sets": []
     },
     {
       "id": "pvp-pearl-cooldown",
@@ -925,13 +964,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 57672,
-      "sha256": "914aebcd510f93a1a73e9127a64feaf7763bc6f4bb379ea4b2ac25f5a633359c",
+      "size": 59820,
+      "sha256": "1955fdbe291914ab855da73af086a063347bbef474f9e950c9be6292f3888d0c",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
@@ -940,13 +979,13 @@
     {
       "id": "solix-zero-font",
       "name": "Solix Zero Font",
-      "version": "1.0.1",
-      "description": "Replaces the Minecraft pixel font everywhere with Rajdhani (text) and JetBrains Mono (numbers). Pairs with Solix Look's Zero Minecraft style. Fonts under the SIL Open Font License. Needs client API 1.7.",
+      "version": "1.1.0",
+      "description": "Replaces the Minecraft pixel font everywhere with Rajdhani (text) and JetBrains Mono (numbers). Pairs with Solix Look's Zero Minecraft style. Symbols, arrows, Latin-1 and super/subscripts filled in from DejaVu so strings never fall back to the pixel font. Fonts under the SIL Open Font License (Rajdhani, JetBrains Mono) and the DejaVu licence. Needs client API 1.7.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-zero-font.solixplugin",
-      "size": 284703,
-      "sha256": "f5896bd695935427d3493f77041461796d298fbd06dfdd210ec8c79e90f9c6f1",
+      "size": 295258,
+      "sha256": "1eebf9e0ab380146bd0c8a470e27b0ead4426cd1b0e94ac11fcb24cdcef65f93",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-zero-font.solixplugin",
       "sets": [
         "visual"
