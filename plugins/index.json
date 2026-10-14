@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T01:38:37Z",
+  "updated": "2026-10-14T01:54:27Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -1354,13 +1354,13 @@
     {
       "id": "zoom",
       "name": "Smooth Zoom",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "Hold (or toggle) a key to zoom in smoothly, OptiFine style. Only narrows your field of view; it can't see anything you couldn't already.",
       "author": "Solix",
       "category": "",
       "file": "zoom.solixplugin",
-      "size": 917,
-      "sha256": "bfb9eb44bdf89b598115582167e0576f70321c57c5eacdd3765d19e7fcdc1fd5",
+      "size": 1984,
+      "sha256": "a631ca26065ff86a4f875f22758d55b9897f934d7f6a45a575cf48bdc37b5b4d",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/zoom.solixplugin",
       "sets": [
         "qol"
