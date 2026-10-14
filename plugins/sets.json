@@ -116,7 +116,9 @@
         "pvp-custom-sky",
         "pvp-no-rain",
         "pvp-no-fog",
-        "pvp-own-nametag"
+        "pvp-own-nametag",
+        "client-detector",
+        "smooth-animations"
       ]
     },
     {

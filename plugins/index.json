@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T03:42:35Z",
+  "updated": "2026-10-14T04:21:00Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -118,7 +118,9 @@
         "pvp-custom-sky",
         "pvp-no-rain",
         "pvp-no-fog",
-        "pvp-own-nametag"
+        "pvp-own-nametag",
+        "client-detector",
+        "smooth-animations"
       ]
     },
     {
@@ -231,6 +233,21 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/chat-timestamps.solixplugin",
       "sets": [
         "qol"
+      ]
+    },
+    {
+      "id": "client-detector",
+      "name": "Client Detector",
+      "version": "1.0.0",
+      "description": "Shows which client other players use: a small badge on nametags and a HUD list. A tick only for verified Solix users; everything else is a faint '?' guess with its source. Passive, never sends anything. Needs client 0.4.5beta (API 1.15); idle on older clients.",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "client-detector.solixplugin",
+      "size": 4849,
+      "sha256": "ba339a765cde18c27c9fb6789cb1c6f0436575dfdcb1211c0d578b58fcf7ddb8",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/client-detector.solixplugin",
+      "sets": [
+        "visual"
       ]
     },
     {
@@ -1289,6 +1306,21 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/screenshot-helper.solixplugin",
       "sets": [
         "qol"
+      ]
+    },
+    {
+      "id": "smooth-animations",
+      "name": "Smooth Animations",
+      "version": "1.0.0",
+      "description": "Smoother swing, block, item swap, walk bob, limb, hurt and sneak animations with presets (Smooth, Snappy, 1.7 style, Custom), plus screen open/close transitions (fade, slide, scale, or matching Solix Look). Needs client 0.4.5beta (API 1.15); installs and stays idle on older clients.",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "smooth-animations.solixplugin",
+      "size": 4025,
+      "sha256": "84d52d0554a36bdc5cb431aefa092b6181864dc63ff786c947824b6fca5b6aba",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/smooth-animations.solixplugin",
+      "sets": [
+        "visual"
       ]
     },
     {
