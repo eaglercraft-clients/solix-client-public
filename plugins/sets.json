@@ -118,7 +118,8 @@
         "pvp-no-fog",
         "pvp-own-nametag",
         "client-detector",
-        "smooth-animations"
+        "smooth-animations",
+        "entity-tweaks"
       ]
     },
     {
@@ -146,7 +147,8 @@
         "pvp-smooth-elytra",
         "pvp-toggle-sneak",
         "profiles",
-        "friends"
+        "friends",
+        "far-chunks"
       ]
     },
     {

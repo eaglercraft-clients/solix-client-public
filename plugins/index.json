@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T04:21:00Z",
+  "updated": "2026-10-14T05:56:37Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -120,7 +120,8 @@
         "pvp-no-fog",
         "pvp-own-nametag",
         "client-detector",
-        "smooth-animations"
+        "smooth-animations",
+        "entity-tweaks"
       ]
     },
     {
@@ -148,7 +149,8 @@
         "pvp-smooth-elytra",
         "pvp-toggle-sneak",
         "profiles",
-        "friends"
+        "friends",
+        "far-chunks"
       ]
     },
     {
@@ -238,13 +240,13 @@
     {
       "id": "client-detector",
       "name": "Client Detector",
-      "version": "1.0.0",
-      "description": "Shows which client other players use: a small badge on nametags and a HUD list. A tick only for verified Solix users; everything else is a faint '?' guess with its source. Passive, never sends anything. Needs client 0.4.5beta (API 1.15); idle on older clients.",
+      "version": "1.1.0",
+      "description": "Shows which client other players use: a small badge on nametags, in the tab list (client 0.4.6beta+) and a HUD list. A tick only for verified Solix users; everything else is a faint '?' guess with its source. Passive, never sends anything. Needs client 0.4.5beta (API 1.15); idle on older clients.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "client-detector.solixplugin",
-      "size": 4849,
-      "sha256": "ba339a765cde18c27c9fb6789cb1c6f0436575dfdcb1211c0d578b58fcf7ddb8",
+      "size": 5345,
+      "sha256": "33b2af5b132c7e69ecad44c3171d4cef1a0cd8491b2f607d951454c6c9f930b1",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/client-detector.solixplugin",
       "sets": [
         "visual"
@@ -294,6 +296,36 @@
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/eagler-shaders.solixplugin",
       "sets": [
         "visual"
+      ]
+    },
+    {
+      "id": "entity-tweaks",
+      "name": "Entity Tweaks",
+      "version": "1.0.0",
+      "description": "End crystal spin and bob presets (Vanilla, Slow, Fast, Still, Custom), dropped item motion, and up to three per-entity rules for size, spin and tint (zombies, players, creepers, armor stands...). All off by default; render-only, hitboxes untouched. Needs client 0.4.6beta (API 1.16); idle on older clients.",
+      "author": "solix-plugins",
+      "category": "visuals",
+      "file": "entity-tweaks.solixplugin",
+      "size": 2488,
+      "sha256": "860cfcf2c4bba9d45641da2ed9b1fb7ae5bb0c33c4289dafba70a48c6bd8be0e",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/entity-tweaks.solixplugin",
+      "sets": [
+        "visual"
+      ]
+    },
+    {
+      "id": "far-chunks",
+      "name": "Far Chunks",
+      "version": "1.0.0",
+      "description": "See further than the server allows: keeps chunks the server unloads (the client's built-in chunk cache) and draws them past its view distance, with a distance slider, a memory cap that stays browser-friendly, optional saving per server, a clear key and a small stats readout. Never affects collision or game logic. Needs client 0.4.6beta (API 1.16); idle on older clients.",
+      "author": "solix-plugins",
+      "category": "utility",
+      "file": "far-chunks.solixplugin",
+      "size": 4066,
+      "sha256": "d42a67bf7fff7fcaff3ba01d799f914fc2670742afad39d6a1202cdd35c341f4",
+      "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/far-chunks.solixplugin",
+      "sets": [
+        "qol"
       ]
     },
     {
@@ -951,13 +983,13 @@
     {
       "id": "pvp-own-nametag",
       "name": "Own Nametag",
-      "version": "1.1.0",
-      "description": "Shows your own nametag in third person (F5), with an optional prefix/suffix on it, plate/shadow tweaks for all nametags and (client 0.4.4beta+) health on nametags.",
+      "version": "1.2.0",
+      "description": "Shows your own nametag in third person (F5), with an optional prefix/suffix on it, plate/shadow tweaks for all nametags and (client 0.4.4beta+) health on nametags. On 0.4.6beta (API 1.16) it works alongside other nametag packs (badges are merged) and can show or hide health on your own tag only.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-own-nametag.solixplugin",
-      "size": 1391,
-      "sha256": "addcab986250d0baf8dab794bd1a76d87c31b9ebd22e2dbc19bb302cc471e2a6",
+      "size": 1700,
+      "sha256": "0b5a8abc7421f16402175e832ceb844c04e18ffe329ca39df3530c6b26aabd33",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-own-nametag.solixplugin",
       "sets": [
         "pvp",
@@ -1311,13 +1343,13 @@
     {
       "id": "smooth-animations",
       "name": "Smooth Animations",
-      "version": "1.0.0",
-      "description": "Smoother swing, block, item swap, walk bob, limb, hurt and sneak animations with presets (Smooth, Snappy, 1.7 style, Custom), plus screen open/close transitions (fade, slide, scale, or matching Solix Look). Needs client 0.4.5beta (API 1.15); installs and stays idle on older clients.",
+      "version": "1.1.0",
+      "description": "Smoother swing, block, item swap, walk bob, limb, hurt and sneak animations with presets (Smooth, Snappy, 1.7 style, Custom), plus screen open/close transitions (fade, slide, scale, or matching Solix Look). 1.7 pose only when holding a sword. On client 0.4.6beta (API 1.16) transitions move, scale and fade the real screen and follow Solix Look's style. Needs client 0.4.5beta (API 1.15); installs and stays idle on older clients.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "smooth-animations.solixplugin",
-      "size": 4025,
-      "sha256": "84d52d0554a36bdc5cb431aefa092b6181864dc63ff786c947824b6fca5b6aba",
+      "size": 4953,
+      "sha256": "061a4933c61f8ff36e75b6b95b2f140fda99eefb437e2c9c424a0cbaeb80ff07",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/smooth-animations.solixplugin",
       "sets": [
         "visual"
@@ -1326,13 +1358,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.8.0",
-      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menus, buttons, titles and the TPS overlay 1.13; Advancements window, tabs, frames and tooltips plus Look-font titles (incl. the death screen) 1.14.",
+      "version": "0.8.1",
+      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menus, buttons, titles and the TPS overlay 1.13; Advancements window, tabs, frames and tooltips plus Look-font titles (incl. the death screen) 1.14. Exports its Style setting so other packs (e.g. Smooth Animations) can match it on API 1.16.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 217855,
-      "sha256": "83c537dd9ab2fa7981dac9e221deec9a2fd837d88f537138e025f560bd183ea4",
+      "size": 217918,
+      "sha256": "d793123d869bd1047ed460097cd46f4077b551d5bd38364b4a06dea8508187c8",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
