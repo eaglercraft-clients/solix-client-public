@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T01:54:27Z",
+  "updated": "2026-10-14T02:20:37Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -298,13 +298,13 @@
     {
       "id": "friends",
       "name": "Friends",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "A Friends button on the title screen and pause menu: friends list with online status and server, requests, blocking, online toasts and an appear-online toggle. Uses your Solix account (the client's own sign-in; the pack never sees your password). Shows a 'not available yet' state until the friends service launches. Needs client API 1.12.",
       "author": "solix-plugins",
       "category": "social",
       "file": "friends.solixplugin",
-      "size": 3664,
-      "sha256": "26b6d16419399b46275bbfb0f623c2bb9c811945981a1fbf6c228c36ab1d7cf7",
+      "size": 3785,
+      "sha256": "0590ccf235117335c1597540549b373d833d83fdf461cb56f8c348a8d61bac5f",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/friends.solixplugin",
       "sets": [
         "qol"
@@ -386,13 +386,13 @@
     {
       "id": "pvp-arrow-hit-ping",
       "name": "Arrow Hit Ping",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "description": "Hit marker at the crosshair when your arrow or trident lands. Client 0.4.4beta+: hits on mobs too, the target name + health under the marker and an optional extra sound.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-arrow-hit-ping.solixplugin",
-      "size": 4140,
-      "sha256": "855fc984b2cdd44cb5badfdac165444b9a144a077d378ff5cef5668c524cc73d",
+      "size": 4197,
+      "sha256": "ab8b550888920075d7070300155a425beb11f5663eb2685da618ff6139ca8b80",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-arrow-hit-ping.solixplugin",
       "sets": [
         "pvp",
@@ -918,13 +918,13 @@
     {
       "id": "pvp-no-rain",
       "name": "No Rain",
-      "version": "1.1.1",
-      "description": "Hides rain, snow and (optionally) lightning bolts; on client 0.4.4beta+ also turns down or mutes the rain and thunder sounds. Visual and audio only.",
+      "version": "1.1.2",
+      "description": "Hides rain, snow and (optionally) lightning bolts; on client 0.4.4.3beta+ also turns down or mutes the rain and thunder sounds. Visual and audio only.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-no-rain.solixplugin",
-      "size": 1404,
-      "sha256": "be02ab82301238237d4f14a6372020b22d84134f363266a5c88e9bc3297934ca",
+      "size": 1498,
+      "sha256": "adda9d51151c659a67aad7afeef67912e08a185b5feb3950d38ba89e294aed39",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-rain.solixplugin",
       "sets": [
         "pvp",
@@ -1294,13 +1294,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.7.0",
-      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menus, buttons, titles and the TPS overlay 1.13.",
+      "version": "0.8.0",
+      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menus, buttons, titles and the TPS overlay 1.13; Advancements window, tabs, frames and tooltips plus Look-font titles (incl. the death screen) 1.14.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 215796,
-      "sha256": "87c736788df9c4d3cb3ee5543d080b81d3d79dfbaeaae142b5cdbe36ab226418",
+      "size": 217855,
+      "sha256": "83c537dd9ab2fa7981dac9e221deec9a2fd837d88f537138e025f560bd183ea4",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
