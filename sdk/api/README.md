@@ -24,7 +24,7 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.settings.slider(id, label, min, max, step, d, desc)` | Numeric slider. |
 | `solix.settings.choice(id, label, options, d, desc)` | Dropdown; value is the index. |
 | `solix.settings.color(id, label, d, desc)` | Colour picker; value is ARGB int. |
-| `solix.settings.keybind(id, label, keyName, desc)` | Rebindable key; fires `keybind` / `keybindRelease`. |
+| `solix.settings.keybind(id, label, keyName, desc, opts)` | Rebindable key; fires `keybind` / `keybindRelease`. |
 | `solix.settings.text(id, label, d, desc)` | A text field (max 64 chars) in the plugin panel. `get()` returns the string. |
 | `solix.settings.get(id)` | Current value of a setting. |
 | `solix.hud.register(el)` | Register a draggable HUD element `{id, name, width, height, x, y, render(g, ctx)}`. Hook `hud`. |
@@ -50,6 +50,7 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.input.release(action)` | &nbsp; |
 | `solix.input.toggle(action)` | &nbsp; |
 | `solix.input.isHeld(action)` | &nbsp; |
+| `solix.input.repeat(on)` | Also deliver auto-repeat keydowns to the `key` event. Cleared on disable. |
 | `solix.input.releaseAll()` | &nbsp; |
 | `solix.profiles.list` | &nbsp; |
 | `solix.profiles.current` | &nbsp; |
@@ -601,14 +602,25 @@ solix.gui.title("sign.edit", { color: "#FFD27A", shadow: true });
 | `gui.skin("advancement_tab", fn)` | `gui` | Every tab (`tabs.png`). `variant` = `above` / `below` / `left` / `right`, `focused` = selected, `page` = 1-based index, `pages` = tabs per side. The icon is still drawn by the client. |
 | `gui.skin("advancement_widget", fn)` | `gui` | Every advancement frame in the tree (`widgets.png`, 26x26). `variant` = `task` / `goal` / `challenge`, `active` = obtained, `value` = progress 0..1, `text` = title, `hovered` when it is the hovered one. The item icon is still drawn by the client. |
 | `gui.skin("advancement_tooltip", fn)` | `gui` | The hover bar + description box (`widgets.png`). `x, y, w, h` cover the whole box (bar 26 high + description), `value` = progress, `active` = done, `focused` = box opens upward. Title / description text and the frame (through `advancement_widget`) are still drawn. |
-| title spec `font`, `size` | `gui` | `{font: "bold", size: 14, color, x, y, shadow}` draws the title with a Solix font (same names as `g.text`). Works in `gui.title`, `gui.layout` `title` and container `inventoryLabel`, for every title. |
-| title spec `draw(g, ctx)` | `gui` | The pack draws the title itself. `ctx = {screen, cls, text, titleKey, x, y, color, centered, width, height, theme, font}` (`x, y` = where vanilla would draw; centered titles give the centre x). |
+| title spec `font`, `size` | `gui` | `{font: "bold", size: 14, color, x, y, shadow}` draws the title with a Solix font (same names as `g.text`). Title `y` (vanilla or your own) is always the **top** of the vanilla 9px text line, like vanilla; a font title is drawn vertically **centred on that line** (`y + 4.5`, since `g.text` centres on y), so it lands where the vanilla title was at any size (0.4.4.5beta+; 0.4.4.4beta drew it centred on the top edge, 4.5px too high). Works in `gui.title`, `gui.layout` `title` and container `inventoryLabel`, for every title. |
+| title spec `draw(g, ctx)` | `gui` | The pack draws the title itself. `ctx = {screen, cls, text, titleKey, x, y, cy, color, centered, width, height, theme, font}` (`x, y` = where vanilla would draw, y = top of the text line; `cy` = its vertical centre, the y to pass to `g.text`; centered titles give the centre x). |
 
 ```js
 solix.gui.title("*", { font: "bold", size: 13, color: solix.theme.accent });
 solix.gui.title("sign.edit", { draw: (g, c) => g.text(c.text.toUpperCase(), c.x, c.y, { align: "center", font: "bold", color: "#FFFFFF" }) });
 solix.gui.skin("advancement_widget", (g, c) => g.panel(c.x, c.y, c.w, c.h, { radius: c.variant === "challenge" ? 13 : 4, accent: c.active }));
 ```
+
+### Key repeat (1.14, client 0.4.4.5beta+)
+
+Holding a key makes the browser send auto-repeat keydowns (~30/s). Plugins **no longer get those as presses**: the
+`key` event and `keybind` events fire once per real press. Opt in when you want them:
+
+| Addition | Hook | Details |
+| --- | --- | --- |
+| `solix.on("key", fn(code, name, repeat))` | `input` | 3rd argument `repeat` is `false` for a real press, `true` for an auto-repeat (only sent after `solix.input.repeat(true)`). |
+| `solix.input.repeat(on)` | `input` | Also deliver auto-repeat keydowns to the `key` event. Cleared on disable. |
+| `solix.settings.keybind(id, label, key, desc, {repeat: true})` | (none) | That keybind also fires `keybind(id, true)` on auto-repeat while held; without it, `keybind(id, false)` fires once per press. `keybindRelease` is unchanged. |
 
 ### Chat input masking + login vault (1.6)
 

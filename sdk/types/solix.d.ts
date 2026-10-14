@@ -114,6 +114,7 @@ interface Solix {
     release(action: any): void;
     toggle(action: any): void;
     isHeld(action: any): void;
+    repeat(on: any): void;
     releaseAll(): void;
   };
   profiles: {
