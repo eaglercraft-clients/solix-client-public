@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13T22:41:18Z",
+  "updated": "2026-10-14T01:38:37Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -386,13 +386,13 @@
     {
       "id": "pvp-arrow-hit-ping",
       "name": "Arrow Hit Ping",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "Hit marker at the crosshair when your arrow or trident lands. Client 0.4.4beta+: hits on mobs too, the target name + health under the marker and an optional extra sound.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-arrow-hit-ping.solixplugin",
-      "size": 4132,
-      "sha256": "e1de57809cfba3016914cd70ea9f4541188d114a0cb43294f596421aa02d8fc0",
+      "size": 4140,
+      "sha256": "855fc984b2cdd44cb5badfdac165444b9a144a077d378ff5cef5668c524cc73d",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-arrow-hit-ping.solixplugin",
       "sets": [
         "pvp",
@@ -918,13 +918,13 @@
     {
       "id": "pvp-no-rain",
       "name": "No Rain",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "Hides rain, snow and (optionally) lightning bolts; on client 0.4.4beta+ also turns down or mutes the rain and thunder sounds. Visual and audio only.",
       "author": "solix-plugins",
       "category": "pvp",
       "file": "pvp-no-rain.solixplugin",
-      "size": 1398,
-      "sha256": "09057dccb2bd400ce6aa62016df0d3817f79f52b1efa903acf69aee1a03fef44",
+      "size": 1404,
+      "sha256": "be02ab82301238237d4f14a6372020b22d84134f363266a5c88e9bc3297934ca",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/pvp-no-rain.solixplugin",
       "sets": [
         "pvp",
@@ -1294,13 +1294,13 @@
     {
       "id": "solix-look",
       "name": "Solix Look",
-      "version": "0.6.0",
-      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menu backdrops 1.13.",
+      "version": "0.7.0",
+      "description": "Rebuilds the game's screens in Solix style, with four levels: Classic, Glass, Tactical and Zero Minecraft (replaces the vanilla HUD; pair it with Solix Zero Font). Glass needs client API 1.6, Zero Minecraft 1.7; menus, buttons, titles and the TPS overlay 1.13.",
       "author": "solix-plugins",
       "category": "visuals",
       "file": "solix-look.solixplugin",
-      "size": 212701,
-      "sha256": "b10b45263e682be2b317de20dacde7495d218c87bf6d016c7a9318e48a6a8f67",
+      "size": 215796,
+      "sha256": "87c736788df9c4d3cb3ee5543d080b81d3d79dfbaeaae142b5cdbe36ab226418",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/solix-look.solixplugin",
       "sets": [
         "visual"
