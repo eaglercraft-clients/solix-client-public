@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T02:20:37Z",
+  "updated": "2026-10-14T02:52:06Z",
   "baseUrl": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/",
   "sets": [
     {
@@ -298,13 +298,13 @@
     {
       "id": "friends",
       "name": "Friends",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "description": "A Friends button on the title screen and pause menu: friends list with online status and server, requests, blocking, online toasts and an appear-online toggle. Uses your Solix account (the client's own sign-in; the pack never sees your password). Shows a 'not available yet' state until the friends service launches. Needs client API 1.12.",
       "author": "solix-plugins",
       "category": "social",
       "file": "friends.solixplugin",
-      "size": 3785,
-      "sha256": "0590ccf235117335c1597540549b373d833d83fdf461cb56f8c348a8d61bac5f",
+      "size": 4260,
+      "sha256": "4b1635c6d8afbcc5f30ed9c280b31462d35faab281a7145067e2bb3019e36314",
       "url": "https://raw.githubusercontent.com/eaglercraft-clients/solix-client-public/main/plugins/friends.solixplugin",
       "sets": [
         "qol"
