@@ -1,13 +1,12 @@
 {
-  "id": "my-plugin",
-  "name": "My Plugin",
+  "id": "starter-hud-kit",
+  "name": "Starter HUD Kit",
   "version": "0.1.0",
   "author": "you",
-  "description": "One sentence about what it shows or does.",
+  "description": "A one-line pill built with the HUD kit and a setting.",
   "apiVersion": 1,
   "entry": "main.js",
   "hooks": [
-    "hud",
-    "tick"
+    "hud"
   ]
 }
