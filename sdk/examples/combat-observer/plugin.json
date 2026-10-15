@@ -1,0 +1,10 @@
+{
+  "id": "combat-observer",
+  "name": "Combat Observer",
+  "version": "1.0.0",
+  "author": "solix-plugins",
+  "description": "API 1.18 example: low-priority attack and damage observers that never cancel and notice when a later handler did.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": ["hud", "combat", "tick"]
+}

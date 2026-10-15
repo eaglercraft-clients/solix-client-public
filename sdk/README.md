@@ -6,7 +6,7 @@ menu buttons, themes, events. No client source lives here.
 
 | Folder | What |
 | --- | --- |
-| [`api/`](api/) | Full API reference, generated from the client's plugin host (API 1.2) |
+| [`api/`](api/) | Full API reference, generated from the client's plugin host (API 1.18) |
 | [`types/solix.d.ts`](types/solix.d.ts) | TypeScript definitions for editor autocomplete |
 | [`template/`](template/) | Minimal starter pack: `plugin.json` + `main.js` |
 | [`tools/`](tools/) | `pack.js` (folder → `.solixplugin`, no deps) and `encrypt-plugin.js` (optional obfuscation) |

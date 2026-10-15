@@ -1,0 +1,10 @@
+{
+  "id": "keybind-consume",
+  "name": "Keybind Consume",
+  "version": "1.0.0",
+  "author": "solix-plugins",
+  "description": "API 1.18 example: a keybind consumed at high priority before a fallback, and a key capture that cancels only the key it owns.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": ["input"]
+}

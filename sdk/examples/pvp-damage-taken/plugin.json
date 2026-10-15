@@ -1,7 +1,7 @@
 {
   "id": "pvp-damage-taken",
   "name": "Damage Taken",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "solix-plugins",
   "description": "Floating numbers for health you lose or regain, plus your last hit and total damage taken this life.",
   "apiVersion": 1,

@@ -3,6 +3,12 @@
 ## 2026-10-16: plugin API 1.18 (client 0.4.8beta)
 - Event priorities: `solix.on(event, fn, { priority } | number)` — higher runs first, default `0`, clamp `-1000..1000`.
 - Cancellation: cancelable events (`chat`, `key`, `mouse`, `keybind`, `settingChange`, `attack`, `damage`, `projectileHit`, `screenOpen`, `serverJoin`) get a trailing `{ cancelled, cancel() }` token; `return false` also cancels. Stops later handlers in the pack and later packs for that emit.
+- Priority orders handlers **within a pack**; packs still run in load order. Cancelling only stops plugin handlers,
+  never the game (use `chat.pipeline({hide})` to hide chat). `keybind` and `settingChange` tokens are per pack.
+- Docs: new [`docs/events.md`](docs/events.md) (priority, tokens, `return false`, cancelable events, feature-test,
+  pitfalls). Settings-and-events, getting started and the guide index were updated.
+- Examples: new `chat-filter`, `keybind-consume`, `screen-guard`, `combat-observer`. `pvp-damage-taken` 1.4.1 no
+  longer drops hits when an earlier pack cancels `damage`.
 
 ## 2026-10-11: SDK 1.1 (plugin API 1.3, client 0.3.2beta)
 - API 1.3: `view.setFovClamp(min, max)`, `view.dynamicFovScale`, `render.fireScale(s)`, `render.offhandScale(s)`,

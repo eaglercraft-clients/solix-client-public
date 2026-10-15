@@ -1,0 +1,10 @@
+{
+  "id": "screen-guard",
+  "name": "Screen Guard",
+  "version": "1.0.0",
+  "author": "solix-plugins",
+  "description": "API 1.18 example: a screenOpen guard that does its own work first and only cancels when you turn that on.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": ["screen", "hud"]
+}

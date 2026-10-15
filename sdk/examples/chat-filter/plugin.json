@@ -1,0 +1,10 @@
+{
+  "id": "chat-filter",
+  "name": "Chat Filter",
+  "version": "1.0.0",
+  "author": "solix-plugins",
+  "description": "Hides chat lines that match your patterns, and (API 1.18) stops packs loaded after it from reacting to them.",
+  "apiVersion": 1,
+  "entry": "main.js",
+  "hooks": ["chat"]
+}

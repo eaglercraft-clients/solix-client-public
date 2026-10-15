@@ -1,6 +1,9 @@
 // Damage Taken: watches your own health each tick. A drop becomes a floating red number, a rise a green one.
 // It's your health only; there's no data about who or what hit you. On API 1.1 hits come from the client's own
 // "damage" event (exact per-hit amounts); the tick watcher then only handles healing and respawns.
+// API 1.18: "damage" is cancelable, and a pack loaded before this one can cancel it, so this pack never gets that
+// event. A drop the tick watcher sees is therefore held for one tick. If no damage event turns up for it, it's
+// counted from the health change. This pack only observes. It never cancels or returns false.
 var v11 = (solix.apiMinor || 0) >= 1;
 
 var units = solix.settings.choice("units", "Units", ["Hearts", "HP"], 0);
@@ -8,19 +11,22 @@ var heals = solix.settings.bool("heals", "Show healing too", true);
 var showTotals = solix.settings.bool("totals", "Show last hit and total this life", false);
 var minChange = solix.settings.slider("min", "Ignore changes smaller than (HP)", 0, 2, 0.5, 0.5);
 
-var lastHp = -1, pops = [], lastHit = 0, total = 0;
+var lastHp = -1, pops = [], lastHit = 0, total = 0, unclaimed = 0;
 function hit(amount) { lastHit = amount; total += amount; pops.push({ v: -amount, at: Date.now() }); while (pops.length > 8) pops.shift(); }
+// low priority: an observer, after anything else this pack might ever do with the event (1.18; ignored before)
 solix.on("damage", function (amount, newHealth) {
   if (amount >= Math.max(0.01, minChange.get())) hit(amount);
   lastHp = newHealth;
-});
+  unclaimed = 0; // the event covered the drop the tick watcher was holding
+}, { priority: -100 });
 solix.on("tick", function (state) {
   var p = state.player;
-  if (!p) { lastHp = -1; return; }
+  if (!p) { lastHp = -1; unclaimed = 0; return; }
+  if (unclaimed > 0) { if (unclaimed >= Math.max(0.01, minChange.get())) hit(unclaimed); unclaimed = 0; } // no damage event came (cancelled earlier)
   if (lastHp < 0) { lastHp = p.health; return; }
   var d = p.health - lastHp;
   if (lastHp <= 0 && p.health > 0) { lastHp = p.health; total = 0; return; } // respawn, not a heal
-  if (d < 0 && v11) { lastHp = p.health; return; } // the damage event already counted it
+  if (d < 0 && v11) { unclaimed = -d; lastHp = p.health; return; } // wait one tick for the damage event
   if (Math.abs(d) >= Math.max(0.01, minChange.get())) {
     if (d < 0) hit(-d);
     else if (heals.get()) { pops.push({ v: d, at: Date.now() }); while (pops.length > 8) pops.shift(); }

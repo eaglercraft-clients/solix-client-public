@@ -36,7 +36,17 @@ writes there too.
 ## 4. Check the version you need
 
 `solix.apiVersion` is `1`. Newer additions are minor versions: check `(solix.apiMinor || 0) >= 1` before using 1.1
-features and `>= 2` for 1.2. Packs that feature-test keep working on older clients.
+features, `>= 2` for 1.2 and so on. Packs that feature-test keep working on older clients.
+
+```js
+var V18 = (solix.apiMinor || 0) >= 18;   // client 0.4.8beta+: event priorities + cancel tokens
+```
+
+On API 1.18, `solix.on` takes an optional priority (`solix.on("chat", fn, { priority: 100 })`, higher runs first
+within your pack), and cancelable events such as `chat`, `key` and `screenOpen` pass a cancel token as the last
+argument. You don't need any of this for a first pack. Older two-argument handlers work unchanged. Just don't
+`return false` from a `chat`/`key`/`mouse`/... handler unless you mean to stop the packs after yours from seeing that
+event. See [Event priority and cancellation](events.md).
 
 ## Next
 
@@ -44,6 +54,7 @@ features and `>= 2` for 1.2. Packs that feature-test keep working on older clien
 
 - [HUD layout](hud-layout.md) explains how to make elements that line up with everything else.
 - [Settings and events](settings-and-events.md)
+- [Event priority and cancellation](events.md) (API 1.18)
 - [Themes](themes.md)
 - [Performance and safety](performance.md)
 - [Publishing](publishing.md)
