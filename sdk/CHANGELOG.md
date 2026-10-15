@@ -1,5 +1,9 @@
 # SDK changelog
 
+## 2026-10-16: plugin API 1.18 (client 0.4.8beta)
+- Event priorities: `solix.on(event, fn, { priority } | number)` — higher runs first, default `0`, clamp `-1000..1000`.
+- Cancellation: cancelable events (`chat`, `key`, `mouse`, `keybind`, `settingChange`, `attack`, `damage`, `projectileHit`, `screenOpen`, `serverJoin`) get a trailing `{ cancelled, cancel() }` token; `return false` also cancels. Stops later handlers in the pack and later packs for that emit.
+
 ## 2026-10-11: SDK 1.1 (plugin API 1.3, client 0.3.2beta)
 - API 1.3: `view.setFovClamp(min, max)`, `view.dynamicFovScale`, `render.fireScale(s)`, `render.offhandScale(s)`,
   `player.lookingAt`, `player.lookingAtEntity`, `player.attackCooldown`, `player.reach`, `combat.lastTarget`,
