@@ -26,8 +26,8 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.settings.choice(id, label, options, d, desc)` | Dropdown; value is the index. |
 | `solix.settings.color(id, label, d, desc)` | Colour picker; value is ARGB int. |
 | `solix.settings.keybind(id, label, keyName, desc, opts)` | Rebindable key; fires `keybind` / `keybindRelease`. |
-| `solix.settings.text(id, label, d, desc, opts)` | &nbsp; |
-| `solix.settings.button(id, label, onClick, desc, opts)` | &nbsp; |
+| `solix.settings.text(id, label, d, desc, opts)` | A text field in the plugin panel. `get()` returns the string. (1.17) `opts = {maxLength: 1..256 (default 64), validate: "entityId" \| RegExp \| "regex source", placeholder}`; text that fails validation shows a red outline and is never saved or delivered (empty is always allowed). The handle adds `valid(str)`. |
+| `solix.settings.button(id, label, onClick, desc, opts)` | (1.17) A button row in the plugin panel. `onClick(ctx)` runs in this pack when it's pressed; `ctx = {id, by}` (`by` = the pack id that pressed it through `plugins.settings`, or `null` for the player). `opts = {text: caption (default "Run", max 24), style: "primary" \| "secondary" \| "danger"}`. Returns `{press()}`. Also fires `settingChange(id, "click")`. Max 5 presses a second. |
 | `solix.settings.get(id)` | Current value of a setting. |
 | `solix.hud.register(el)` | Register a draggable HUD element `{id, name, width, height, x, y, render(g, ctx)}`. Hook `hud`. |
 | `solix.hud.replace(id, fn, o)` | The singleplayer TPS / Chunks / Entities overlay (top right). `ctx.data = {running, fresh, ageMs, singleThread, lines: [...]}`; `lines` are the vanilla lines (first = TPS). |
@@ -101,7 +101,7 @@ Everything hangs off the injected `solix` object. Types: [`../types/solix.d.ts`]
 | `solix.render.world.shapes(list, o)` | &nbsp; |
 | `solix.render.entity(types, fn)` | `types`: an entity id (`"minecraft:end_crystal"` or `"end_crystal"`), an array of them, or `"*"`. Runs every frame for each matching entity that is drawn. `ctx = {type, id, age, partialTicks, pos: [x, y, z], self}`. Return `{rotate: [x, y, z] (degrees), translate: [x, y, z] (blocks), scale, spinSpeed, bob, tint, hidden}` or `null` for vanilla. Returns `{remove()}`; `render.entity(sameTypes, null)` also removes. |
 | `solix.render.tablist.row(fn)` | Runs for every row each frame the tab list is open. `ctx = {name, display, ping, gamemode, team, self, client, x, y, w, h, width, height, theme, font}`; `display` is the formatted name before any pack prefix, `client` is the `solix.players.client(name)` info (or `null`), `x/y/w/h` is the row box from the previous frame (0 on the first). Return `{prefix, suffix, color, hidden, draw}` or nothing. `draw: fn(g, box)` runs after layout with the exact box `{name, x, y, w, h}` (GUI px). `row(null)` removes; returns `{remove()}`. |
-| `solix.render.tablist.headerFooter(fn)` | &nbsp; |
+| `solix.render.tablist.headerFooter(fn)` | `ctx = {header, footer, width, height, theme, font}` (the server's text with § codes, or `null`). Return `{header: text \| false, footer: text \| false, draw: fn(g, box)}`; `false` hides that part, leaving it out keeps the server's. `box = {x, y, w, h, headerH, footerH}` is the whole list panel. |
 | `solix.render.nametags(spec)` | `showOwn` shows your nametag in third person; `background:false` removes the plate; `players: {Name: {hidden, prefix, suffix}}` sets per-player overrides (merged across packs since 1.16). |
 | `solix.render.crosshair.draw(fn)` | Draws a custom crosshair (wraps `hud.replace("crosshair")`). ctx adds `target` (`"entity"`/`"block"`/null), `entity`, `block`, `inRange`, `shield`, `attackCooldown`. `draw(null)` restores vanilla. |
 | `solix.render.hitboxes(o)` | Draw entity hitbox outlines, only for entities you can actually see: invisible entities are skipped, and so is any entity whose box centre and all 8 corners are hidden behind blocks from the camera (and anything over 128 blocks away). Defaults: `players: true, mobs: true, items: false`, colour white. `hitboxes({enabled: false})` turns it off. F3+B (vanilla hitboxes) overrides it. |
@@ -826,6 +826,12 @@ if ((solix.apiMinor || 0) >= 18) {
   solix.on("chat", (text) => solix.log("got:", text), 0); // never runs if cancelled above
 }
 ```
+
+**Scope and limits (0.4.8.1beta):**
+
+- **Priority only orders handlers inside one pack.** Packs themselves always run in load order; a priority of `1000` in one pack does not run before a priority `0` handler in a pack loaded earlier.
+- **Cancelling stops the handlers that come after it**: the rest of your own pack's handlers and the handlers of every later pack. It does **not** block the game action itself in this release: cancelled chat still shows in the chat box, cancelled keys and mouse clicks still reach Minecraft, and cancelled screens still open. Treat cancel as "stop other packs reacting", not as a way to suppress vanilla behaviour.
+- **Hooks still gate every event.** A pack only receives `chat` with the `chat` hook, `key`/`mouse` with `input`, `attack` with `combat`, `damage` with `combat` or `tick`, `projectileHit` with `world`, `screenOpen` with `screen` and `serverJoin` with `server`, exactly as before 1.18. Packs without the hook are skipped and never see the event or its cancel token.
 
 ### API 1.17 additions (client 0.4.7beta+)
 
