@@ -19,10 +19,10 @@ and particles, and a plugin system with a drag-and-drop HUD editor. You don't ne
 
 ## Offline download
 
-Latest (v0.4.6beta) direct links:
-[SolixClient-v0.4.6beta-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.4.6beta/SolixClient-v0.4.6beta-js.html) ·
-[SolixClient-v0.4.6beta-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.4.6beta/SolixClient-v0.4.6beta-wasm.html)
-(release: [v0.4.6beta](https://github.com/eaglercraft-clients/solix-client-public/releases/tag/v0.4.6beta)).
+Latest (v0.4.8.1beta) direct links:
+[SolixClient-v0.4.8.1beta-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.4.8.1beta/SolixClient-v0.4.8.1beta-js.html) ·
+[SolixClient-v0.4.8.1beta-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.4.8.1beta/SolixClient-v0.4.8.1beta-wasm.html)
+(release: [v0.4.8.1beta](https://github.com/eaglercraft-clients/solix-client-public/releases/tag/v0.4.8.1beta)).
 Plugins install in-client from the GitHub catalog and EaglerTiers goes through the client.solxc.tech proxy, so both work offline-from-file too.
 Stable names (kept updated to the latest build): [SolixClient-js.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-js.html) ·
 [SolixClient-wasm.html](https://github.com/eaglercraft-clients/solix-client-public/releases/download/v0.3beta/SolixClient-wasm.html) ·
@@ -31,8 +31,8 @@ The same HTML files are also in [`download/`](download/) in this repo. Or browse
 
 | File | What it is |
 | --- | --- |
-| `SolixClient-v0.4.6beta-js.html` | The whole client in one HTML file. Save it and open it in any browser. |
-| `SolixClient-v0.4.6beta-wasm.html` | The faster WASM-GC build in one file (needs JSPI, e.g. Chrome 137+). |
+| `SolixClient-v0.4.8.1beta-js.html` | The whole client in one HTML file. Save it and open it in any browser. |
+| `SolixClient-v0.4.8.1beta-wasm.html` | The faster WASM-GC build in one file (needs JSPI, e.g. Chrome 137+). |
 | `solix-plugins-v0.3beta.solixplugin.zip` | Every v0.3beta plugin pack in one zip (newer packs: [`plugins/`](plugins/)). |
 | `SolixClient-js.html`, `SolixClient-wasm.html`, `solix-plugins.solixplugin.zip` | The same files under stable names, always the latest. |
 | `*.solixplugin` | The same packs as individual files. |
